@@ -19,3 +19,27 @@ PAM_ConstantsTest >> testAllFlagValues [
 	self assert: PAM_Constants flagVowelOrY equals: 64.
 	self assert: PAM_Constants flagAlphaOrBackTick equals: 128
 ]
+
+{ #category : 'Flags for Constant purpose' }
+PAM_ConstantsTest >> testFlagCombinations_withConsonants [
+
+    | flags |
+    
+    "Test a consonant flag combination"
+    flags := PAM_Constants flagConsonant bitOr: PAM_Constants flagVoiced.
+    self assert: (flags bitAnd: PAM_Constants flagConsonant) > 0.
+    self assert: (flags bitAnd: PAM_Constants flagVoiced) > 0.
+    self assert: (flags bitAnd: PAM_Constants flagVowelOrY) equals: 0.
+]
+
+{ #category : 'Flags for Constant purpose' }
+PAM_ConstantsTest >> testFlagCombinations_withVowels [
+
+    | flags |
+    
+    "Test a vowel flag combination"
+    flags := PAM_Constants flagVowelOrY bitOr: PAM_Constants flagAlphaOrBackTick .
+    self assert: (flags bitAnd: PAM_Constants flagVowelOrY) > 0.
+    self assert: (flags bitAnd: PAM_Constants flagAlphaOrBackTick) > 0.
+	 self assert: (flags bitAnd: PAM_Constants flagNumeric ) equals: 0.
+]
