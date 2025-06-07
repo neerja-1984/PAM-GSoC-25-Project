@@ -7,6 +7,7 @@ Class {
 
 { #category : 'Flags for Constant purpose' }
 PAM_ConstantsTest >> testAllFlagValues [
+
 	"Test that all flag constants have the correct values"
 
 	self assert: PAM_Constants flagNumeric equals: 1.
