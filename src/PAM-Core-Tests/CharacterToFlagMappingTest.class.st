@@ -1,5 +1,5 @@
 Class {
-	#name : 'ReciterTableTest',
+	#name : 'CharacterToFlagMappingTest',
 	#superclass : 'TestCase',
 	#category : 'PAM-Core-Tests-Reciter',
 	#package : 'PAM-Core-Tests',
@@ -7,17 +7,17 @@ Class {
 }
 
 { #category : 'tests' }
-ReciterTableTest >> testBacktickMapsTo130 [
+CharacterToFlagMappingTest >> testBacktickMapsTo130 [
     | map |
-    map := ReciterTable mapEnglishVocabularyWithFlags.
+    map := Flags mappingCharacterToFlag.
     self assert: (map at: $') equals: (128 bitOr: 2).
 ]
 
 { #category : 'tests' }
-ReciterTableTest >> testConsonantsValues [
+CharacterToFlagMappingTest >> testConsonantsValues [
 
 	| map |
-	map := ReciterTable mapEnglishVocabularyWithFlags.
+	map := Flags mappingCharacterToFlag.
 	($B to: $Z) do: [ :char |
 		(#( $A $E $I $O $U $Y ) includes: char) ifFalse: [
 			self assert: ((map at: char) bitAnd: 128) equals: 128.
@@ -25,34 +25,34 @@ ReciterTableTest >> testConsonantsValues [
 ]
 
 { #category : 'tests' }
-ReciterTableTest >> testFricativeConsonantValues [
+CharacterToFlagMappingTest >> testFricativeConsonantValues [
 
 	| map |
-	map := ReciterTable mapEnglishVocabularyWithFlags.
+	map := Flags mappingCharacterToFlag.
 	#( $C $G $J $S $X $Z ) do: [ :char |
 		self assert: ((map at: char) bitAnd: 16) equals: 16 ]
 ]
 
 { #category : 'tests' }
-ReciterTableTest >> testNumbersMapTo3 [
+CharacterToFlagMappingTest >> testNumbersMapTo3 [
     | map |
-    map := ReciterTable mapEnglishVocabularyWithFlags.
+    map := Flags mappingCharacterToFlag.
     ($0 to: $9) do: 
 		[ :digit | self assert: (map at: digit) equals: (1 bitOr: 2) ].
 ]
 
 { #category : 'tests' }
-ReciterTableTest >> testPunctuationMapsTo2 [
+CharacterToFlagMappingTest >> testPunctuationMapsTo2 [
     | map |
-    map := ReciterTable mapEnglishVocabularyWithFlags.
+    map := Flags mappingCharacterToFlag.
     #($! $" $# $$ $% $& $* $+ $, $- $. $/ $: $; $< $= $> $? $@ $^) do: 
 			[ :char | self assert: (map at: char) equals: 2 ].
 ]
 
 { #category : 'tests' }
-ReciterTableTest >> testSpaceAndBracketsMapTo0 [
+CharacterToFlagMappingTest >> testSpaceAndBracketsMapTo0 [
     | map |
-    map := ReciterTable mapEnglishVocabularyWithFlags.
+    map := Flags mappingCharacterToFlag.
     self assert: (map at: Character space) equals: 0.
     self assert: (map at: $() equals: 0.
     self assert: (map at: $)) equals: 0.
@@ -63,18 +63,18 @@ ReciterTableTest >> testSpaceAndBracketsMapTo0 [
 ]
 
 { #category : 'tests' }
-ReciterTableTest >> testVoicedConsonantValues [
+CharacterToFlagMappingTest >> testVoicedConsonantValues [
 
 	| map |
-	map := ReciterTable mapEnglishVocabularyWithFlags.
+	map := Flags mappingCharacterToFlag.
 	#( $D $Z $T ) do: [ :char |
 		self assert: ((map at: char) bitAnd: 4) equals: 4 ]
 ]
 
 { #category : 'tests' }
-ReciterTableTest >> testVowelsMapTo192 [
+CharacterToFlagMappingTest >> testVowelsMapTo192 [
     | map |
-    map := ReciterTable mapEnglishVocabularyWithFlags.
+    map := Flags mappingCharacterToFlag.
     #($A $E $I $O $U $Y) do: 
 		[ :char | self assert: (map at: char) equals: (128 bitOr: 64) ].
 ]
