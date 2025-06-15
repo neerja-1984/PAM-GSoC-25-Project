@@ -1,25 +1,9 @@
-"
-Has CRUD Capabilities with Data Consistency 
-
-1) addRule:replacement: 
-
-		Adds a rule for a given character. If a rule with the same pattern exists, it updates the replacement. Otherwise, it adds a new rule.
-		
-2) removeRule:replacement:
-
-		Removes all rules with matching pattern and replacement.
-		
-3) initialiseRules 
-		
-			Makes the RulesDictionary
-			
-4) printAllRules
-
-		print all rules for this character -> open the dictionary type mapping in transcript.
-"
 Class {
-	#name : 'LetterARules',
-	#superclass : 'Object',
+	#name : 'A',
+	#superclass : 'LetterRules',
+	#classVars : [
+		'RulesDictionary'
+	],
 	#classInstVars : [
 		'RulesDictionary'
 	],
@@ -29,39 +13,23 @@ Class {
 }
 
 { #category : 'accessing' }
-LetterARules class >> addRule: pattern replacement: replacement [
-
-    | ruleList existingRule |
+A class >> getAllRules [
+  "gets all rules of the subclass it is called for"
+    (self classPool includesKey: #RulesDictionary)
+        ifFalse: [ Error new signal: 'RulesDictionary not defined in subclass.' ].
     
-    ruleList := self getAllRules.
+    (self classPool at: #RulesDictionary) ifNil: [
+        self initialiseRules.
+    ].
 
-    "Check if pattern exists"
-    existingRule := ruleList detect: [ :each | each pattern = pattern ] ifNone: [ nil ].
-
-    existingRule 
-        ifNotNil: [ 
-            existingRule replacement: replacement.
-            Transcript nextPutAll: 'Updated existing rule for pattern: '; nextPutAll: pattern; cr.
-        ]
-        ifNil: [ 
-            ruleList add: (RulePOJO new
-                pattern: pattern;
-                replacement: replacement;
-                yourself).
-            Transcript nextPutAll: 'Added new rule for pattern: '; nextPutAll: pattern; cr.
-        ].
+    ^ self classPool at: #RulesDictionary.
 ]
 
 { #category : 'accessing' }
-LetterARules class >> getAllRules [
-    ^ RulesDictionary ifNil: [ self initialiseRules ]
-]
-
-{ #category : 'accessing' }
-LetterARules class >> initialiseRules [
+A class >> initialiseRules [
     "Initialize rules for letter A"
-    RulesDictionary := OrderedCollection new.
-    
+    self classPool at: #RulesDictionary put: OrderedCollection new.
+
     "Add all A rules"
     self addRule: ' (A.)' replacement: 'EH4Y.'.
     self addRule: '(A) ' replacement: 'AH'.
@@ -105,36 +73,22 @@ LetterARules class >> initialiseRules [
 ]
 
 { #category : 'accessing' }
-LetterARules class >> printRules [
-	"Print all rules added to this letter's ruleset"
+A class >> printRules [
 
-	| rules |
+	| tmp1 |
 	Transcript open.
-	rules := self getAllRules.
-	rules do: [ :rule |
+	tmp1 := self getAllRules.
+	tmp1
+		ifNil: [
+			Transcript
+				show: 'RulesDictionary is nil. Initialize first.';
+				cr.
+			^ self ]
+		ifNotNil: [ tmp1 ].
+	tmp1 do: [ :arg1 |
 		Transcript
-			show: rule pattern;
+			show: arg1 pattern;
 			show: ' -> ';
-			show: rule replacement;
+			show: arg1 replacement;
 			cr ]
-]
-
-{ #category : 'accessing' }
-LetterARules class >> removeRule: aPattern replacement: aReplacement [
-
-	| ruleList ruleToRemove |
-	ruleList := self getAllRules.
-
-	"Find the rule to remove"
-	ruleToRemove := ruleList detect: [ :each |
-		each pattern = aPattern and: [ each replacement = aReplacement ]
-	] ifNone: [ 
-		Transcript nextPutAll: 'Rule not found'; cr.
-		^ self 
-	].
-
-	"Remove it"
-	ruleList remove: ruleToRemove.
-	Transcript nextPutAll: 'Rule removed successfully'; cr.
-
 ]

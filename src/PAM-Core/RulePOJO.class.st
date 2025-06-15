@@ -1,5 +1,11 @@
+"
+""Has the instance variable pattern and replacement""
+""Follows the order LHS -> RHS""
+""where LHS = pattern""
+""where RHS = replacement"" 
+"
 Class {
-	#name : 'Rules',
+	#name : 'RulePOJO',
 	#superclass : 'Object',
 	#instVars : [
 		'pattern',
@@ -11,25 +17,25 @@ Class {
 }
 
 { #category : 'accessing' }
-Rules >> pattern [
+RulePOJO >> pattern [
     "Return the pattern string this rule matches against"
     ^ pattern
 ]
 
 { #category : 'accessing' }
-Rules >> pattern: aString [
+RulePOJO >> pattern: aString [
     "Set the pattern string"
     pattern := aString
 ]
 
 { #category : 'accessing' }
-Rules >> replacement [
+RulePOJO >> replacement [
     "Return the replacement string"
     ^ replacement
 ]
 
 { #category : 'accessing' }
-Rules >> replacement: aString [
+RulePOJO >> replacement: aString [
     "Set the replacement string"
     replacement := aString
 ]
