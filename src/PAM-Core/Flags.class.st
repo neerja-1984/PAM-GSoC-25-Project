@@ -58,7 +58,15 @@ Flags class >> flagVowelOrY [
 ]
 
 { #category : 'mapping' }
-Flags class >> mappingCharacterToFlag [
+Flags class >> flagsFor: aCharacter [
+	"Return the flags for the given character.If character is not found, return 0."
+	| allCharFlag|
+	allCharFlag := self mappingCharactersToFlag.
+   ^ allCharFlag at: aCharacter asUppercase ifAbsent: [ 0 ]
+]
+
+{ #category : 'mapping' }
+Flags class >> mappingCharactersToFlag [
 	|charFlags|
 	 charFlags := Dictionary new.
 	

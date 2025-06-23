@@ -74,21 +74,26 @@ A class >> initialiseRules [
 
 { #category : 'accessing' }
 A class >> printRules [
+    "Print all rules added to a letter's ruleset"
+    | rules |
+    Transcript open.
+    rules := self getAllRules.
 
-	| tmp1 |
-	Transcript open.
-	tmp1 := self getAllRules.
-	tmp1
-		ifNil: [
-			Transcript
-				show: 'RulesDictionary is nil. Initialize first.';
-				cr.
-			^ self ]
-		ifNotNil: [ tmp1 ].
-	tmp1 do: [ :arg1 |
-		Transcript
-			show: arg1 pattern;
-			show: ' -> ';
-			show: arg1 replacement;
-			cr ]
+    rules ifNil: [
+        Transcript show: 'RulesDictionary is nil. Initialize first.'; cr.
+        ^ self
+    ].
+
+    rules do: [ :rule |
+        Transcript
+            show: rule prefix;
+            show: '(';
+            show: rule pattern;
+            show: ')';
+            show: rule suffix;
+            show: ' -> ';
+            show: rule replacement;
+            cr
+    ].
+
 ]

@@ -26,27 +26,36 @@ Class {
 }
 
 { #category : 'accessing' }
-LetterRules class >> addRule: pattern replacement: replacement [
-	 "add rules ; incase pattern exists .. update it's replacement"
-    | ruleList existingRule |
-    
+LetterRules class >> addRule: patternString replacement: replacement [
+    "Add rule with pattern that may include prefix/suffix.
+    If pattern exists, update its replacement."
+
+    | ruleList existingRule parsedRule |
+
     ruleList := self getAllRules.
 
-    "Check if pattern exists"
-    existingRule := ruleList detect: [ :each | each pattern = pattern ] ifNone: [ nil ].
+    "Create a new RulePOJO and parse the pattern"
+    parsedRule := RulePOJO new.
+    parsedRule parsePattern: patternString.
+    parsedRule replacement: replacement.
 
-    existingRule 
-        ifNotNil: [ 
+    "Check if a rule with same core pattern already exists"
+    existingRule := ruleList
+        detect: [ :each | each pattern = parsedRule pattern ]
+        ifNone: [ nil ].
+
+    existingRule
+        ifNotNil: [
             existingRule replacement: replacement.
-            Transcript nextPutAll: 'Updated existing rule for pattern: '; nextPutAll: pattern; cr.
+            existingRule prefix: parsedRule prefix.
+            existingRule suffix: parsedRule suffix.
+            Transcript nextPutAll: 'Updated existing rule for pattern: '; nextPutAll: patternString; cr.
         ]
-        ifNil: [ 
-            ruleList add: (RulePOJO new
-                pattern: pattern;
-                replacement: replacement;
-                yourself).
-            Transcript nextPutAll: 'Added new rule for pattern: '; nextPutAll: pattern; cr.
+        ifNil: [
+            ruleList add: parsedRule.
+            Transcript nextPutAll: 'Added new rule for pattern: '; nextPutAll: patternString; cr.
         ].
+
 ]
 
 { #category : 'accessing' }
@@ -77,22 +86,28 @@ LetterRules class >> initialiseRules [
 
 { #category : 'accessing' }
 LetterRules class >> printRules [
-	"Print all rules added to a letter's ruleset"
-	| rules |
-	Transcript open.
-	rules := self getAllRules.
-	
-	rules ifNil: [
-		Transcript show: 'RulesDictionary is nil. Initialize first.'; cr.
-		^ self
-	].
-	
-	rules do: [ :rule |
-		Transcript
-			show: rule pattern;
-			show: ' -> ';
-			show: rule replacement;
-			cr ]
+    "Print all rules added to a letter's ruleset"
+    | rules |
+    Transcript open.
+    rules := self getAllRules.
+
+    rules ifNil: [
+        Transcript show: 'RulesDictionary is nil. Initialize first.'; cr.
+        ^ self
+    ].
+
+    rules do: [ :rule |
+        Transcript
+            show: rule prefix;
+            show: '(';
+            show: rule pattern;
+            show: ')';
+            show: rule suffix;
+            show: ' -> ';
+            show: rule replacement;
+            cr
+    ].
+
 ]
 
 { #category : 'accessing' }

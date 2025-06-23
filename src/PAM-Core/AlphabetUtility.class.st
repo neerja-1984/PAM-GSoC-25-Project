@@ -1,7 +1,7 @@
 Class {
 	#name : 'AlphabetUtility',
 	#superclass : 'Object',
-	#classInstVars : [
+	#classVars : [
 		'RulesDictionaryByLetter'
 	],
 	#category : 'PAM-Core-Reciter',
@@ -15,14 +15,14 @@ AlphabetUtility class >> initializeDictionary [
     RulesDictionaryByLetter := Dictionary new.
     
     "Register all letter rule classes"
-    self registerLetterRules: LetterARules for: $A.
-    "self registerLetterRules: LetterBRules for: $B."
+    self registerLetterRules: A for: $A.
+    self registerLetterRules: B for: $B.
 ]
 
 { #category : 'initialization - data' }
 AlphabetUtility class >> registerLetterRules: ruleClass for: letter [
     "Register a letter's rules"
-    RulesDictionaryByLetter at: letter asUppercase put: ruleClass rules
+    RulesDictionaryByLetter at: letter asUppercase put: ruleClass getAllRules.
 ]
 
 { #category : 'accessing' }

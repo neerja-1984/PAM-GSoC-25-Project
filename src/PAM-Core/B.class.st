@@ -43,20 +43,26 @@ B class >> initialiseRules [
 
 { #category : 'accessing' }
 B class >> printRules [
-	"Print all rules added to a letter's ruleset"
-	| rules |
-	Transcript open.
-	rules := self getAllRules.
-	
-	rules ifNil: [
-		Transcript show: 'RulesDictionary is nil. Initialize first.'; cr.
-		^ self
-	].
-	
-	rules do: [ :rule |
-		Transcript
-			show: rule pattern;
-			show: ' -> ';
-			show: rule replacement;
-			cr ]
+    "Print all rules added to a letter's ruleset"
+    | rules |
+    Transcript open.
+    rules := self getAllRules.
+
+    rules ifNil: [
+        Transcript show: 'RulesDictionary is nil. Initialize first.'; cr.
+        ^ self
+    ].
+
+    rules do: [ :rule |
+        Transcript
+            show: rule prefix;
+            show: '(';
+            show: rule pattern;
+            show: ')';
+            show: rule suffix;
+            show: ' -> ';
+            show: rule replacement;
+            cr
+    ].
+
 ]
