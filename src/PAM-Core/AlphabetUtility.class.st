@@ -17,6 +17,10 @@ AlphabetUtility class >> initializeDictionary [
     "Register all letter rule classes"
     self registerLetterRules: A for: $A.
     self registerLetterRules: B for: $B.
+    self registerLetterRules: E for: $E.
+    self registerLetterRules: H for: $H.
+    self registerLetterRules: L for: $L.
+    self registerLetterRules: O for: $O.
 ]
 
 { #category : 'initialization - data' }
