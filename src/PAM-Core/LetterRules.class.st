@@ -112,21 +112,35 @@ LetterRules class >> printRules [
 
 { #category : 'accessing' }
 LetterRules class >> removeRule: aPattern replacement: aReplacement [
-	"Removes all rule for a given character with matching pattern and replacement."
+    "Removes the rule that matches the parsed core pattern and replacement."
 
-	| ruleList ruleToRemove |
-	ruleList := self getAllRules.
+    | ruleList ruleToRemove parsedRule corePattern |
 
-	"Find the rule to remove"
-	ruleToRemove := ruleList detect: [ :each |
-		each pattern = aPattern and: [ each replacement = aReplacement ]
-	] ifNone: [ 
-		Transcript nextPutAll: 'Rule not found'; cr.
-		^ self 
-	].
+    ruleList := self getAllRules.
 
-	"Remove it"
-	ruleList remove: ruleToRemove.
-	Transcript nextPutAll: 'Rule removed successfully'; cr.
+    "Parse the pattern string to extract core pattern (between parentheses)"
+    parsedRule := RulePOJO new.
+    parsedRule parsePattern: aPattern.
+    corePattern := parsedRule pattern.
+
+    "Find the rule to remove"
+    ruleToRemove := ruleList
+        detect: [ :each |
+            each pattern = corePattern and: [ each replacement = aReplacement ]
+        ]
+        ifNone: [
+            Transcript
+                nextPutAll: 'Rule not found for pattern: ';
+                nextPutAll: aPattern;
+                cr.
+            ^ self
+        ].
+
+    "Remove the rule"
+    ruleList remove: ruleToRemove.
+    Transcript
+        nextPutAll: 'Rule removed successfully for pattern: ';
+        nextPutAll: aPattern;
+        cr.
 
 ]
