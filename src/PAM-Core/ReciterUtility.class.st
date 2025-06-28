@@ -1,8 +1,8 @@
 Class {
 	#name : 'ReciterUtility',
 	#superclass : 'Object',
-	#classInstVars : [
-		'debugMode'
+	#classVars : [
+		'debugger'
 	],
 	#category : 'PAM-Core-Reciter',
 	#package : 'PAM-Core',
@@ -74,18 +74,6 @@ ReciterUtility class >> checkSuffix: suffix in: text at: position [
 ]
 
 { #category : 'debug' }
-ReciterUtility class >> disableDebug [
-    "Disable debug logging"
-    debugMode := false
-]
-
-{ #category : 'debug' }
-ReciterUtility class >> enableDebug [
-    "Enable debug logging"
-    debugMode := true
-]
-
-{ #category : 'debug' }
 ReciterUtility class >> findMatchingRuleIn: text at: position [
     "Find the best matching rule for the text at the given position.
      Returns the matching rule with the longest pattern or nil if no rule matches."
@@ -108,6 +96,11 @@ ReciterUtility class >> findMatchingRuleIn: text at: position [
     ]
 ]
 
+{ #category : 'class initialization' }
+ReciterUtility class >> initialize [
+	debugger:= true.
+]
+
 { #category : 'debug' }
 ReciterUtility class >> isSpecialCharacter: char [
     "Check if the character is a special pattern character while doing a prefix / suffix check"
@@ -116,12 +109,23 @@ ReciterUtility class >> isSpecialCharacter: char [
 
 { #category : 'debug' }
 ReciterUtility class >> log: message [
-    debugMode ifTrue: [ 
-        Transcript 
-            show: '[SAMReciter] ' ;
-			   show: message; 
-            cr 
-    ]
+
+    | senderContext className methodName |
+    
+    "Get the sender context (the method that called log:)"
+    senderContext := thisContext sender.
+    className := senderContext method methodClass name.
+    methodName := senderContext selector.
+    
+    Transcript
+        nextPutAll: '[';
+        nextPutAll: className;
+        nextPutAll: ' >> #';
+        nextPutAll: methodName asString;
+        nextPutAll: '] ';
+        nextPutAll: message;
+        cr.
+    Transcript flush
 ]
 
 { #category : 'debug' }

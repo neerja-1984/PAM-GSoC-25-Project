@@ -78,8 +78,3 @@ Reciter class >> textToPhonemes: input [
 
     ^ output
 ]
-
-{ #category : 'as yet unclassified' }
-Reciter >> textToPhoneme: aString [ 
-	self shouldBeImplemented.
-]
