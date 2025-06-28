@@ -9,6 +9,70 @@ Class {
 	#tag : 'Reciter'
 }
 
+{ #category : 'debug' }
+Reciter class >> checkPrefix: prefix in: text at: position [
+    "Check if the prefix matches before the current position"
+    | pos rulePos |
+    pos := position.
+    rulePos := prefix size.
+    
+    [rulePos > 0 and: [pos > 0]] whileTrue: [
+        | ruleChar textChar |
+        ruleChar := prefix at: rulePos.
+        textChar := text at: pos.
+        
+        (ReciterUtility isSpecialCharacter: ruleChar) 
+            ifTrue: [ 
+                | result |
+                result := ReciterUtility matchSpecialCharacter: ruleChar 
+                                            in: text 
+                                            at: pos
+                                            direction: -1.
+                result ifNil: [ ^ false ].
+                pos := result.
+            ]
+            ifFalse: [
+                (textChar asUppercase = ruleChar asUppercase) ifFalse: [ ^ false ].
+                pos := pos - 1.
+            ].
+        rulePos := rulePos - 1.
+    ].
+    
+    ^ true
+]
+
+{ #category : 'debug' }
+Reciter class >> checkSuffix: suffix in: text at: position [
+    "Check if the suffix matches after the current position"
+    | pos rulePos |
+    pos := position.
+    rulePos := 1.
+    
+    [rulePos <= suffix size and: [pos <= text size]] whileTrue: [
+        | ruleChar textChar |
+        ruleChar := suffix at: rulePos.
+        textChar := text at: pos ifAbsent: [ $  ].
+        
+        (ReciterUtility isSpecialCharacter: ruleChar)
+            ifTrue: [ 
+                | result |
+                result := ReciterUtility matchSpecialCharacter: ruleChar 
+                                            in: text 
+                                            at: pos
+                                            direction: 1.
+                result ifNil: [ ^ false ].
+                pos := result.
+            ]
+            ifFalse: [
+                (textChar asUppercase = ruleChar asUppercase) ifFalse: [ ^ false ].
+                pos := pos + 1.
+            ].
+        rulePos := rulePos + 1.
+    ].
+    
+    ^ rulePos > suffix size
+]
+
 { #category : 'class initialization' }
 Reciter class >> initialize [
     "Initialize the reciter with default settings"

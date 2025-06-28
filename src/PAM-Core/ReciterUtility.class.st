@@ -10,70 +10,6 @@ Class {
 }
 
 { #category : 'debug' }
-ReciterUtility class >> checkPrefix: prefix in: text at: position [
-    "Check if the prefix matches before the current position"
-    | pos rulePos |
-    pos := position.
-    rulePos := prefix size.
-    
-    [rulePos > 0 and: [pos > 0]] whileTrue: [
-        | ruleChar textChar |
-        ruleChar := prefix at: rulePos.
-        textChar := text at: pos.
-        
-        (self isSpecialCharacter: ruleChar) 
-            ifTrue: [ 
-                | result |
-                result := self matchSpecialCharacter: ruleChar 
-                                            in: text 
-                                            at: pos
-                                            direction: -1.
-                result ifNil: [ ^ false ].
-                pos := result.
-            ]
-            ifFalse: [
-                (textChar asUppercase = ruleChar asUppercase) ifFalse: [ ^ false ].
-                pos := pos - 1.
-            ].
-        rulePos := rulePos - 1.
-    ].
-    
-    ^ true
-]
-
-{ #category : 'debug' }
-ReciterUtility class >> checkSuffix: suffix in: text at: position [
-    "Check if the suffix matches after the current position"
-    | pos rulePos |
-    pos := position.
-    rulePos := 1.
-    
-    [rulePos <= suffix size and: [pos <= text size]] whileTrue: [
-        | ruleChar textChar |
-        ruleChar := suffix at: rulePos.
-        textChar := text at: pos ifAbsent: [ $  ].
-        
-        (self isSpecialCharacter: ruleChar)
-            ifTrue: [ 
-                | result |
-                result := self matchSpecialCharacter: ruleChar 
-                                            in: text 
-                                            at: pos
-                                            direction: 1.
-                result ifNil: [ ^ false ].
-                pos := result.
-            ]
-            ifFalse: [
-                (textChar asUppercase = ruleChar asUppercase) ifFalse: [ ^ false ].
-                pos := pos + 1.
-            ].
-        rulePos := rulePos + 1.
-    ].
-    
-    ^ rulePos > suffix size
-]
-
-{ #category : 'debug' }
 ReciterUtility class >> findMatchingRuleIn: text at: position [
     "Find the best matching rule for the text at the given position.
      Returns the matching rule with the longest pattern or nil if no rule matches."
@@ -212,7 +148,7 @@ ReciterUtility class >> matches: rule in: text at: position [
     suffix := rule suffix.
     
     "Check prefix"
-    (self checkPrefix: prefix in: text at: position - 1) ifFalse: [ ^ false ].
+    (Reciter checkPrefix: prefix in: text at: position - 1) ifFalse: [ ^ false ].
     
     "Check main pattern"
     matchStart := position.
@@ -222,6 +158,6 @@ ReciterUtility class >> matches: rule in: text at: position [
     (text copyFrom: matchStart to: matchEnd) = pattern ifFalse: [ ^ false ].
     
     "Check suffix"
-    ^ self checkSuffix: suffix in: text at: matchEnd + 1
+    ^ Reciter checkSuffix: suffix in: text at: matchEnd + 1
     
 ]
