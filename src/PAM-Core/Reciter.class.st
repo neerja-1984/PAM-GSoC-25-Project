@@ -18,60 +18,65 @@ Reciter class >> initialize [
 
 { #category : 'control' }
 Reciter class >> textToPhonemes: input [
-	"Convert input text to phonemes"
+    "Convert input text to phonemes"
+    | text output pos charFlags rule currentChar |
+    text := '  ',input asUppercase. "Pad with space to justify start of a word"
+    output := ''.
+    pos := 1.
 
-	| text output pos charFlags rule |
-	text := ' ' , input asUppercase.
-	output := ''.
-	pos := 1.
+    [ pos <= text size ] whileTrue: [
+        currentChar := text at: pos.
 
-	[ pos <= text size ] whileTrue: [
-		| currentChar |
-		currentChar := text at: pos.
+        "1. Handle period only if followed by number"
+        (currentChar = $. and: [
+            pos < text size and: [
+                ((text at: pos + 1 ifAbsent: [ $ ]) isDigit) not
+            ]
+        ]) ifTrue: [
+            output := output , '.'.
+            pos := pos + 1.
+            ReciterUtility log: 'Skipping period (.)'.
+        ].
 
-		"Handle period (.) specially"
-		currentChar = $. ifTrue: [ "Only process if followed by a number"
-			(pos < text size and: [
-				 (Flags flagsFor: (text at: pos + 1)) anyMask: 1 ]) ifFalse: [
-				output := output , '.'.
-				pos := pos + 1.
-				ReciterUtility log: 'Skipping period (.)'.
-				"^ output" ] "FLAG_NUMERIC" ].
+        "2. Get char flags"
+        charFlags := Flags flagsFor: currentChar.
 
-		"Handle other special characters"
-		charFlags := Flags flagsFor: currentChar.
+        "3. Skip unknown characters (no flags)"
+        (charFlags = 0) ifTrue: [
+            output := output , ' '.
+            ReciterUtility log: 'Skipping unknown character: ' , currentChar asString.
+            pos := pos + 1.
+        ].
 
-		charFlags = 0 ifTrue: [ "Character not in our tables (e.g., space, punctuation)"
-			output := output , ' '.
-			pos := pos + 1.
-			ReciterUtility log: 'Skipping unknown character: ' , currentChar asString.
-			"^ output" ].
+        "4. Handle non-alphabetic characters (except quotes)"
+        ((charFlags anyMask: 128) not and: [ currentChar ~= $' ]) ifTrue: [
+            output := output , ' '.
+            ReciterUtility log: 'Skipping non-alphabetic character: ' , currentChar asString.
+            pos := pos + 1.
+        ].
 
-		"Check if character is alphabetic or quote"
-		(charFlags anyMask: 128) ifFalse: [ "FLAG_ALPHA_OR_QUOT"
-			output := output , ' '.
-			pos := pos + 1.
-			ReciterUtility log: 'Skipping non-alphabetic character: ' , currentChar asString.
-			"^ output" ].
+        "5. Apply matching rule if found"
+        rule := ReciterUtility findMatchingRuleIn: text at: pos.
 
-		rule := ReciterUtility findMatchingRuleIn: text at: pos.
+        rule
+            ifNotNil: [
+                | replacement skipCount |
+                replacement := rule replacement.
+                skipCount := rule pattern size max: 1.
 
-		rule
-			ifNotNil: [
-				| replacement skipCount |
-				replacement := rule replacement.
-				skipCount := rule pattern size max: 1.
+                output := output , replacement.
+                pos := pos + skipCount.
 
-				output := output , replacement.
-				pos := pos + skipCount.
+                ReciterUtility log: 'Applied rule: ' , rule printString.
+            ]
+            ifNil: [
+                output := output , currentChar asString.
+                pos := pos + 1.
+                ReciterUtility log: 'No rule for: ' , currentChar asString.
+            ].
+    ].
 
-				ReciterUtility log: 'Applied rule: ' , rule printString ]
-			ifNil: [ "No matching rule, keep character as is"
-				output := output , currentChar asString.
-				pos := pos + 1.
-				ReciterUtility log: 'No rule for: ' , currentChar asString ] ].
-
-	^ output
+    ^ output
 ]
 
 { #category : 'as yet unclassified' }
