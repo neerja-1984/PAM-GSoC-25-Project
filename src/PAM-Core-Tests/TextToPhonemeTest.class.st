@@ -22,11 +22,11 @@ TextToPhonemeTest >> setUp [
 TextToPhonemeTest >> testBABAPhoneme [
 
 	| phonemeOutput inputText  |
-	inputText := ' BABA'.
+	inputText := 'BABA'.
 	
 	phonemeOutput := Reciter textToPhonemes: inputText.
 	
-	self assert: phonemeOutput equals: '  BAEBAE'.
+	self assert: phonemeOutput equals: 'BAEBAE'.
 	
 	
 	

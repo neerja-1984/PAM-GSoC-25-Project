@@ -140,5 +140,8 @@ Reciter class >> textToPhonemes: input [
             ].
     ].
 
+    "Remove leading and trailing spaces"
+    output := output trimBoth.
+
     ^ output
 ]
