@@ -40,8 +40,12 @@ LetterRules class >> addRule: patternString replacement: replacement [
     parsedRule replacement: replacement.
 
     "Check if a rule with same core pattern already exists"
-    existingRule := ruleList
-        detect: [ :each | each pattern = parsedRule pattern ]
+	existingRule := ruleList
+    	detect: [ :each |
+        	each pattern = parsedRule pattern and:
+        	[ each prefix = parsedRule prefix and:
+          	[ each suffix = parsedRule suffix ] ]
+    	]
         ifNone: [ nil ].
 
     existingRule

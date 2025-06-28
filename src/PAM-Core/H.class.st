@@ -30,14 +30,15 @@ H class >> initialiseRules [
     "Initialize rules for letter H"
     self classPool at: #RulesDictionary put: OrderedCollection new.
 
-    "Add all H rules"
+    "Add all H rules (with '=' removed from patterns)"
     self addRule: ' (H) ' replacement: 'EY4CH'.
-    self addRule: ' (HAV)=' replacement: '/HAE6V'.
-    self addRule: ' (HERE)=' replacement: '/HIYR'.
-    self addRule: ' (HOUR)=' replacement: 'AW5ER'.
-    self addRule: '(HOW)=' replacement: '/HAW'.
-    self addRule: '(H)#=' replacement: '/H'.
-    self addRule: '(H)=' replacement: ''.
+    self addRule: ' (HAV)' replacement: '/HAE6V'.
+    self addRule: ' (HERE)' replacement: '/HIYR'.
+    self addRule: ' (HOUR)' replacement: 'AW5ER'.
+    self addRule: '(HOW)' replacement: '/HAW'.
+    self addRule: '(H)#' replacement: '/H'.
+    self addRule: '(H)' replacement: ''.
+
 ]
 
 { #category : 'accessing' }
