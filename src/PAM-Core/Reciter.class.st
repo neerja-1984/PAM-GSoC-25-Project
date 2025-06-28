@@ -54,7 +54,7 @@ Reciter class >> textToPhonemes: input [
 			ReciterUtility log: 'Skipping non-alphabetic character: ' , currentChar.
 			^ output ].
 
-		rule := ReciterUtility findMatchingRule: text at: pos.
+		rule := ReciterUtility findMatchingRuleIn: text at: pos.
 
 		rule
 			ifNotNil: [

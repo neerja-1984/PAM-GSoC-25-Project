@@ -10,12 +10,6 @@ Class {
 }
 
 { #category : 'debug' }
-ReciterUtility class >> anyMask: aMask [
-    "Return true if any bit in the mask is also set in the receiver"
-    ^ (self bitAnd: aMask) ~= 0
-]
-
-{ #category : 'debug' }
 ReciterUtility class >> checkPrefix: prefix in: text at: position [
     "Check if the prefix matches before the current position"
     | pos rulePos |
@@ -92,44 +86,32 @@ ReciterUtility class >> enableDebug [
 ]
 
 { #category : 'debug' }
-ReciterUtility class >> findMatchingRule: text at: position [
-    "Find the first matching rule for the text at the given position"
-    | char |
+ReciterUtility class >> findMatchingRuleIn: text at: position [
+    "Find the best matching rule for the text at the given position.
+     Returns the matching rule with the longest pattern or nil if no rule matches."
+    | char rules matchingRules |
+
     char := (text at: position ifAbsent: [ ^ nil ]) asUppercase.
-
-    ((Flags flagsFor: char) anyMask: 2) ifTrue: [  "FLAG_RULESET2"
-        (AlphabetUtility rulesFor: char) do: [ :rule |
-            (self matches: rule in: text at: position) ifTrue: [ ^ rule ].
-        ].
+    rules := AlphabetUtility rulesFor: char.
+    
+    "Find all matching rules"
+    matchingRules := rules select: [ :rule |
+        self matches: rule in: text at: position
     ].
-
-    ^ nil
+    
+    "Return nil if no rules match"
+    matchingRules isEmpty ifTrue: [ ^ nil ].
+    
+    "Find the rule with the longest pattern"
+    ^ matchingRules inject: matchingRules first into: [ :longest :rule |
+        rule pattern size > longest pattern size ifTrue: [ rule ] ifFalse: [ longest ]
+    ]
 ]
 
 { #category : 'debug' }
 ReciterUtility class >> isSpecialCharacter: char [
-    "Check if the character is a special pattern character"
+    "Check if the character is a special pattern character while doing a prefix / suffix check"
     ^ #($  $# $. $& $@ $^ $+ $: $') includes: char
-]
-
-{ #category : 'debug' }
-ReciterUtility class >> isSpecialCharacter: char at: position in: text [
-	"Check if the character should be treated specially"
-
-	| flags |
-	flags := Flags flagsFor: char.
-	"Check if character is not alphabetic or quote"
-	(flags anyMask: Flags flagAlphaOrBackTick ) ifFalse: [ ^ true ].
-	
-	"check if . is full stop or decimal"
-	(char = $. and: [
-		 position + 1 > text size or: 
-		[ 
-			 ((Flags flagsFor: (text at: position + 1)) anyMask: Flags flagNumeric ) not 
-		] 
-		]) ifTrue: [ ^ true ].
-
-	^ false
 ]
 
 { #category : 'debug' }
@@ -220,11 +202,13 @@ ReciterUtility class >> matchSpecialCharacter: char in: text at: position direct
 { #category : 'debug' }
 ReciterUtility class >> matches: rule in: text at: position [
     "Check if the rule matches at the given position"
-    | pattern matchStart matchEnd |
+    | pattern matchStart matchEnd prefix suffix|
     pattern := rule pattern.
+    prefix := rule prefix.
+    suffix := rule suffix.
     
     "Check prefix"
-    (self checkPrefix: rule prefix in: text at: position - 1) ifFalse: [ ^ false ].
+    (self checkPrefix: prefix in: text at: position - 1) ifFalse: [ ^ false ].
     
     "Check main pattern"
     matchStart := position.
@@ -234,5 +218,6 @@ ReciterUtility class >> matches: rule in: text at: position [
     (text copyFrom: matchStart to: matchEnd) = pattern ifFalse: [ ^ false ].
     
     "Check suffix"
-    ^ self checkSuffix: rule suffix in: text at: matchEnd + 1
+    ^ self checkSuffix: suffix in: text at: matchEnd + 1
+    
 ]

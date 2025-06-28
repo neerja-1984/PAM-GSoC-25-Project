@@ -88,7 +88,7 @@ Flags class >> mappingCharactersToFlag [
 			[ :digit | charFlags at: digit put: (1|2) ].
     
     "BackTick with flagAlphaOrBackTick ( value = 128 ) and flagRuleset2 ( value = 2 )"
-    charFlags at: $' put: (128 | 2).
+    charFlags at: $` put: (128 | 2).
     
     "A, E, I, O, U, Y with flagVowelOrY ( value = 64 ) and flagAlphaOrBackTick ( value = 128 )"
     #($A $E $I $O $U $Y) do: 
