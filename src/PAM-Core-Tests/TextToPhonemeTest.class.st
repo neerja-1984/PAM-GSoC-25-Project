@@ -19,12 +19,26 @@ TextToPhonemeTest >> setUp [
 ]
 
 { #category : 'tests' }
+TextToPhonemeTest >> testBABAPhoneme [
+
+	| phonemeOutput inputText  |
+	inputText := ' BABA'.
+	
+	phonemeOutput := Reciter textToPhonemes: inputText.
+	
+	self assert: phonemeOutput equals: '  BAEBAE'.
+	
+	
+	
+]
+
+{ #category : 'tests' }
 TextToPhonemeTest >> testCollegePhoneme [
 
 	| phonemeOutput inputText  |
 	inputText := 'COLLEGE'.
 	
-	phonemeOutput := reciter textToPhoneme: inputText.
+	phonemeOutput := Reciter textToPhonemes: inputText.
 	
 	self assert: phonemeOutput equals: 'KOW5ULEHG'.
 	

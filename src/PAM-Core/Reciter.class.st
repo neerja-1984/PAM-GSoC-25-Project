@@ -36,7 +36,7 @@ Reciter class >> textToPhonemes: input [
 				output := output , '.'.
 				pos := pos + 1.
 				ReciterUtility log: 'Skipping period (.)'.
-				^ output ] "FLAG_NUMERIC" ].
+				"^ output" ] "FLAG_NUMERIC" ].
 
 		"Handle other special characters"
 		charFlags := Flags flagsFor: currentChar.
@@ -44,15 +44,15 @@ Reciter class >> textToPhonemes: input [
 		charFlags = 0 ifTrue: [ "Character not in our tables (e.g., space, punctuation)"
 			output := output , ' '.
 			pos := pos + 1.
-			ReciterUtility log: 'Skipping unknown character: ' , currentChar.
-			^ output ].
+			ReciterUtility log: 'Skipping unknown character: ' , currentChar asString.
+			"^ output" ].
 
 		"Check if character is alphabetic or quote"
 		(charFlags anyMask: 128) ifFalse: [ "FLAG_ALPHA_OR_QUOT"
 			output := output , ' '.
 			pos := pos + 1.
-			ReciterUtility log: 'Skipping non-alphabetic character: ' , currentChar.
-			^ output ].
+			ReciterUtility log: 'Skipping non-alphabetic character: ' , currentChar asString.
+			"^ output" ].
 
 		rule := ReciterUtility findMatchingRuleIn: text at: pos.
 
@@ -67,7 +67,7 @@ Reciter class >> textToPhonemes: input [
 
 				ReciterUtility log: 'Applied rule: ' , rule printString ]
 			ifNil: [ "No matching rule, keep character as is"
-				output := output , currentChar.
+				output := output , currentChar asString.
 				pos := pos + 1.
 				ReciterUtility log: 'No rule for: ' , currentChar asString ] ].
 

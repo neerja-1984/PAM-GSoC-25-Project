@@ -70,6 +70,17 @@ LetterTest >> testGetAllRulesReturnsCollection [
 ]
 
 { #category : 'adding' }
+LetterTest >> testMatchesRule [
+
+	| rules match |
+	rules := AlphabetUtility rulesFor: $L.
+	match := ReciterUtility matches: (rules at: 2) in: 'LLO' at: 2.
+	
+	self assert: match.
+
+]
+
+{ #category : 'adding' }
 LetterTest >> testRemoveRule [
 	 | rules match |
 	
