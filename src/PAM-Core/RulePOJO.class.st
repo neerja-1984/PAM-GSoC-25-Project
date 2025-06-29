@@ -1,8 +1,22 @@
 "
-""Has the instance variable pattern and replacement""
-""Follows the order LHS -> RHS""
-""where LHS = pattern""
-""where RHS = replacement"" 
+RulePOJO represents the POJO each rule will have.
+
+It stores:
+- pattern: the core string to match (LHS)
+- replacement: the phoneme output (RHS)
+- prefix and suffix of the pattern
+
+The `parsePattern:` method extracts the prefix, pattern, and suffix
+from strings in the form:
+
+  - 'prefix(PATTERN)suffix' → prefix: 'prefix', pattern: 'PATTERN', suffix: 'suffix'
+  - '(PATTERN)'            → prefix: '',      pattern: 'PATTERN', suffix: ''
+
+Examples:
+  - parsePattern: 'S(AR)E'   → prefix: 'S', pattern: 'AR', suffix: 'E'
+  - parsePattern: '(ING)'    → prefix: '',  pattern: 'ING', suffix: ''
+
+
 "
 Class {
 	#name : 'RulePOJO',

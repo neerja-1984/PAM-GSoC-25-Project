@@ -1,3 +1,40 @@
+"
+Reciter is the core class responsible for converting input text to phonemes using rule-based matching.
+
+Responsibilities:
+- Traverses the input character by character
+- Applies context-sensitive rules based on prefix, pattern, and suffix
+- Filters out unknown or irrelevant characters
+- Produces a phoneme sequence as output
+
+Main Methods:
+
+1. checkPrefix:in:at:
+   Checks whether the prefix portion of a rule matches before the current position in the text.
+   Example:
+     (Reciter checkPrefix: 'ST' in: 'STRING' at: 3) → true
+     (prefix 'ST' matches text before 'R' in 'STRING')
+
+2. checkSuffix:in:at:
+   Checks whether the suffix portion of a rule matches after the current position.
+   Example:
+     (Reciter checkSuffix: 'NG' in: 'SING' at: 3) → true
+     (suffix 'NG' matches text after 'I')
+
+3. textToPhonemes:
+   The main driver method. Converts input text into its phoneme representation.
+   - Skips punctuation and unsupported characters -> this will change in later version of code , where we can consider punctuation rules as well
+   - Looks for best matching rule at each position
+   - Applies replacement from matched rule
+   - Outputs the phoneme string
+   Example:
+     (Reciter textToPhonemes: 'SING') → 'SIH4NG'
+
+Design Notes:
+- Uses `ReciterUtility>>#log:` for logging and rule matching
+- Character classification is handled via Flags
+
+"
 Class {
 	#name : 'Reciter',
 	#superclass : 'Object',

@@ -1,3 +1,41 @@
+"
+ReciterUtility provides core phoneme matching logic and helper utilities for `textTophonemes` conversion.
+
+Key responsibilities:
+- Rule matching (`findMatchingRuleIn:at:`)
+- Pattern interpretation (`matches:in:at:` and `matchSpecialCharacter:in:at:direction:`)
+- Logging and debug support (`log:`)
+- Special character recognition (`isSpecialCharacter:`)
+
+- Examples:
+
+1. Find the best matching rule for a character at a given position:
+   ReciterUtility findMatchingRuleIn: 'SING' at: 2
+   → Returns a dictionary of `RulePOJO` rules matching 'I' in 'SING'
+
+2. Check if a rule matches text contextually:
+   ReciterUtility matches: rule in: 'STRING' at: 3
+   → Returns true if prefix, pattern, and suffix match via `Reciter>>#checkSuffix:  in:  at:` and `Reciter>>#checkPrefix:  in:  at:`
+
+3. Interpret special characters in rule patterns:
+   ReciterUtility matchSpecialCharacter: $# in: 'AGE' at: 2 direction: 1
+   → Returns next position if 'G' is a vowel or 'Y'
+
+4. Debugging:
+   ReciterUtility log: 'Matched prefix: STR'
+   → Prints: [ReciterUtility >> #someMethod] Matched prefix: STR
+
+Pattern logic handled in `matchSpecialCharacter: in: at:`
+
+- Meaning of the special characters : 
+  1. ' ' (space): non-alphabet
+  2. '#' : vowel or Y
+  3. '&' : diphthong/digraph
+  4. ':' : vowel excluding Y
+  5. '@', '^', '+', '.' : voiced/consonant flags
+
+
+"
 Class {
 	#name : 'ReciterUtility',
 	#superclass : 'Object',
@@ -26,7 +64,7 @@ ReciterUtility class >> findMatchingRuleIn: text at: position [
     "Return nil if no rules match"
     matchingRules isEmpty ifTrue: [ ^ nil ].
     
-    "Find the rule with the longest pattern"
+    "Find the rule with the longest pattern: which will represent the correct rule which is to be mapped"
     ^ matchingRules inject: matchingRules first into: [ :longest :rule |
         rule pattern size > longest pattern size ifTrue: [ rule ] ifFalse: [ longest ]
     ]

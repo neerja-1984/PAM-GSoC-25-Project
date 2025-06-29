@@ -1,21 +1,34 @@
 "
-Has CRUD Capabilities with Data Consistency 
+LetterRules is a utility class that provides CRUD (Create, Read, Update, Delete) operations for phoneme rules associated with a particular letter.
 
-1) addRule:replacement: 
+Each subclass of LetterRules manages rules for one specific character (like A, B, C...), using a shared classPool variable called `RulesDictionary`, which stores an `OrderedCollection` of `RulePOJO` objects. Each rule includes a prefix, core pattern, suffix, and a phoneme replacement.
 
-		Adds a rule for a given character. If a rule with the same pattern exists, it updates the replacement. Otherwise, it adds a new rule.
-		
-2) removeRule:replacement:
+Core Features:
 
-		Removes all rules with matching pattern and replacement.
-		
-3) initialiseRules 
-		
-			Makes the RulesDictionary
-			
-4) printAllRules
+1. `addRule:replacement:`  
+    Adds a new rule with the given pattern and replacement.  
+    If a rule with the same prefix, pattern, and suffix already exists, its replacement is updated.  
+    - Example:  
+        LetterARules addRule: '(AR)#' replacement: 'EH4R'.
 
-		print all rules for this character -> open the dictionary type mapping in transcript.
+2. `removeRule:replacement:`  
+    Removes a rule that matches the given pattern and replacement string.  
+    - Example:  
+        LetterARules removeRule: '(AR)#' replacement: 'EH4R'.
+
+3. `initialiseRules`  
+    Initializes the `RulesDictionary` for the subclass if it's not already set.  
+    - Automatically called during rule access if needed.
+
+4. `printRules`  
+    Logs all rules for the current subclass (e.g., LetterARules) to the Transcript in a readable format.  
+    - Output example: ^(AR)# -> EH4R
+
+Design Note:  
+LetterRules is designed to be subclassed for each letter (e.g., `A`, `B`) to modularize rule management.  
+
+
+
 "
 Class {
 	#name : 'LetterRules',
