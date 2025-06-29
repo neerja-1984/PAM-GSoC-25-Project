@@ -9,7 +9,7 @@ Class {
 	#tag : 'Rules'
 }
 
-{ #category : 'adding' }
+{ #category : 'tests' }
 LetterTest >> resetRulesUtility [
     "Helper method to clear RulesDictionary before each test"
     A classPool at: #RulesDictionary put: OrderedCollection new.
@@ -31,7 +31,7 @@ LetterTest >> tearDown [
 
 ]
 
-{ #category : 'adding' }
+{ #category : 'tests' }
 LetterTest >> testAddRule [
 
 	| rules match |
@@ -45,7 +45,7 @@ LetterTest >> testAddRule [
 	self assert: match replacement equals: 'VALUE'
 ]
 
-{ #category : 'adding' }
+{ #category : 'tests' }
 LetterTest >> testAddRuleUpdatesIfExists [
 	 | rules match |
     self resetRulesUtility .
@@ -61,7 +61,7 @@ LetterTest >> testAddRuleUpdatesIfExists [
     self assert: (rules select: [:r | r pattern = 'DUPLICATE']) size equals: 1.
 ]
 
-{ #category : 'adding' }
+{ #category : 'tests' }
 LetterTest >> testGetAllRulesReturnsCollection [
 
 	| rules |
@@ -69,7 +69,7 @@ LetterTest >> testGetAllRulesReturnsCollection [
 	self assert: rules class equals: OrderedCollection
 ]
 
-{ #category : 'adding' }
+{ #category : 'tests' }
 LetterTest >> testMatchesRule [
 
 	| rules match |
@@ -80,7 +80,7 @@ LetterTest >> testMatchesRule [
 
 ]
 
-{ #category : 'adding' }
+{ #category : 'tests' }
 LetterTest >> testRemoveRule [
 	 | rules match |
 	

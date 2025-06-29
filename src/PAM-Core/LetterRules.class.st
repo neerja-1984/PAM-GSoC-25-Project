@@ -25,7 +25,7 @@ Class {
 	#tag : 'Rules'
 }
 
-{ #category : 'accessing' }
+{ #category : 'adding-removing methods' }
 LetterRules class >> addRule: patternString replacement: replacement [
     "Add rule with pattern that may include prefix/suffix.
     If pattern exists, update its replacement."
@@ -114,7 +114,7 @@ LetterRules class >> printRules [
 
 ]
 
-{ #category : 'accessing' }
+{ #category : 'adding-removing methods' }
 LetterRules class >> removeRule: aPattern replacement: aReplacement [
     "Removes the rule that matches the parsed core pattern and replacement."
 

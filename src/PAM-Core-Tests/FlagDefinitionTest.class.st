@@ -6,7 +6,7 @@ Class {
 	#tag : 'Reciter'
 }
 
-{ #category : 'constants' }
+{ #category : 'test' }
 FlagDefinitionTest >> testAllFlagValues [
 
 	"Test that all flag constants have the correct values"
@@ -21,7 +21,7 @@ FlagDefinitionTest >> testAllFlagValues [
 	self assert: Flags flagAlphaOrBackTick equals: 128
 ]
 
-{ #category : 'constants' }
+{ #category : 'test' }
 FlagDefinitionTest >> testFlagCombinations_withConsonants [
 
     | flags |
@@ -33,7 +33,7 @@ FlagDefinitionTest >> testFlagCombinations_withConsonants [
     self assert: (flags bitAnd: Flags flagVowelOrY) equals: 0.
 ]
 
-{ #category : 'constants' }
+{ #category : 'test' }
 FlagDefinitionTest >> testFlagCombinations_withVowels [
 
     | flags |
