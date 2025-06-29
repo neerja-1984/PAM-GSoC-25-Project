@@ -9,7 +9,7 @@ Class {
 	#tag : 'Reciter'
 }
 
-{ #category : 'debug' }
+{ #category : 'execution' }
 Reciter class >> checkPrefix: prefix in: text at: position [
     "Check if the prefix matches before the current position"
     | pos rulePos |
@@ -41,7 +41,7 @@ Reciter class >> checkPrefix: prefix in: text at: position [
     ^ true
 ]
 
-{ #category : 'debug' }
+{ #category : 'execution' }
 Reciter class >> checkSuffix: suffix in: text at: position [
     "Check if the suffix matches after the current position"
     | pos rulePos |
@@ -80,7 +80,7 @@ Reciter class >> initialize [
 
 ]
 
-{ #category : 'control' }
+{ #category : 'execution' }
 Reciter class >> textToPhonemes: input [
     "Convert input text to phonemes"
     | text output pos charFlags rule currentChar |

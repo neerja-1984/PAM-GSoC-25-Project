@@ -9,7 +9,7 @@ Class {
 	#tag : 'Reciter'
 }
 
-{ #category : 'debug' }
+{ #category : 'execution' }
 ReciterUtility class >> findMatchingRuleIn: text at: position [
     "Find the best matching rule for the text at the given position.
      Returns the matching rule with the longest pattern or nil if no rule matches."
@@ -37,7 +37,7 @@ ReciterUtility class >> initialize [
 	debugger:= true.
 ]
 
-{ #category : 'debug' }
+{ #category : 'mapping' }
 ReciterUtility class >> isSpecialCharacter: char [
     "Check if the character is a special pattern character while doing a prefix / suffix check"
     ^ #($  $# $. $& $@ $^ $+ $: $') includes: char
@@ -64,7 +64,7 @@ ReciterUtility class >> log: message [
     Transcript flush
 ]
 
-{ #category : 'debug' }
+{ #category : 'execution' }
 ReciterUtility class >> matchSpecialCharacter: char in: text at: position direction: dir [
     "Handle special pattern characters"
     | nextPos currentChar prevChar |
@@ -139,7 +139,7 @@ ReciterUtility class >> matchSpecialCharacter: char in: text at: position direct
 
 ]
 
-{ #category : 'debug' }
+{ #category : 'execution' }
 ReciterUtility class >> matches: rule in: text at: position [
     "Check if the rule matches at the given position"
     | pattern matchStart matchEnd prefix suffix|
