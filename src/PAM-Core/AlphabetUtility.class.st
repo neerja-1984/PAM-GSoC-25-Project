@@ -51,13 +51,33 @@ AlphabetUtility class >> initializeDictionary [
     "Initialize the rule utility"
     RulesDictionaryByLetter := Dictionary new.
     
-    "Register all letter rule classes"
-    self registerLetterRules: A for: $A.
-    self registerLetterRules: B for: $B.
-    self registerLetterRules: E for: $E.
-    self registerLetterRules: H for: $H.
-    self registerLetterRules: L for: $L.
-    self registerLetterRules: O for: $O.
+	"Register all letter rule classes"
+	self registerLetterRules: A for: $A.
+	self registerLetterRules: B for: $B.
+	self registerLetterRules: C for: $C.
+	self registerLetterRules: D for: $D.
+	self registerLetterRules: E for: $E.
+	self registerLetterRules: F for: $F.
+	self registerLetterRules: G for: $G.
+	self registerLetterRules: H for: $H.
+	self registerLetterRules: I for: $I.
+	self registerLetterRules: J for: $J.
+	self registerLetterRules: K for: $K.
+	self registerLetterRules: L for: $L.
+	self registerLetterRules: M for: $M.
+	self registerLetterRules: N for: $N.
+	self registerLetterRules: O for: $O.
+	self registerLetterRules: P for: $P.
+	self registerLetterRules: Q for: $Q.
+	self registerLetterRules: R for: $R.
+	self registerLetterRules: S for: $S.
+	self registerLetterRules: T for: $T.
+	self registerLetterRules: U for: $U.
+	self registerLetterRules: V for: $V.
+	self registerLetterRules: W for: $W.
+	self registerLetterRules: X for: $X.
+	self registerLetterRules: Y for: $Y.
+	self registerLetterRules: Z for: $Z.
 ]
 
 { #category : 'initialization - data' }

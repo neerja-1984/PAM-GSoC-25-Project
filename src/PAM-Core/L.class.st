@@ -30,7 +30,7 @@ L class >> initialiseRules [
     "Initialize rules for letter L"
     self classPool at: #RulesDictionary put: OrderedCollection new.
 
-    "Add all L rules (with '=' removed from patterns)"
+    "Add all L rules"
     self addRule: ' (L) ' replacement: 'EH4L'.
     self addRule: '(LO)C#' replacement: 'LOW'.
     self addRule: 'L(L)' replacement: ''.

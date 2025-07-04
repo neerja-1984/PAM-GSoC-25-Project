@@ -1,5 +1,5 @@
 Class {
-	#name : 'H',
+	#name : 'C',
 	#superclass : 'LetterRules',
 	#classVars : [
 		'RulesDictionary'
@@ -13,7 +13,7 @@ Class {
 }
 
 { #category : 'accessing' }
-H class >> getAllRules [
+C class >> getAllRules [
   "gets all rules of the subclass it is called for"
     (self classPool includesKey: #RulesDictionary)
         ifFalse: [ Error new signal: 'RulesDictionary not defined in subclass.' ].
@@ -26,23 +26,32 @@ H class >> getAllRules [
 ]
 
 { #category : 'accessing' }
-H class >> initialiseRules [
-    "Initialize rules for letter H"
+C class >> initialiseRules [
+    "Initialize rules for letter C"
     self classPool at: #RulesDictionary put: OrderedCollection new.
 
-    "Add all H rules "
-    self addRule: ' (H) ' replacement: 'EY4CH'.
-    self addRule: ' (HAV)' replacement: '/HAE6V'.
-    self addRule: ' (HERE)' replacement: '/HIYR'.
-    self addRule: ' (HOUR)' replacement: 'AW5ER'.
-    self addRule: '(HOW)' replacement: '/HAW'.
-    self addRule: '(H)#' replacement: '/H'.
-    self addRule: '(H)' replacement: ''.
-
+    "Add all C rules"
+	self addRule: ' (C)' replacement: 'SIY4'.
+	self addRule: ' (CH)^' replacement: 'K'.
+	self addRule: '^E(CH)' replacement: 'K'.
+	self addRule: '(CHA)R#' replacement: 'KEH5'.
+	self addRule: '(CH)' replacement: 'CH'.
+	self addRule: ' S(CI)#' replacement: 'SAY4'.
+	self addRule: '(CI)A' replacement: 'SH'.
+	self addRule: '(CI)O' replacement: 'SH'.
+	self addRule: '(CI)EN' replacement: 'SH'.
+	self addRule: '(CITY)' replacement: 'SIHTIY'.
+	self addRule: '(C)+' replacement: 'S'.
+	self addRule: '(CK)' replacement: 'K'.
+	self addRule: '(COMMODORE)' replacement: 'KAA4MAHDOHR'.
+	self addRule: '(COM)' replacement: 'KAHM'.
+	self addRule: '(CUIT)' replacement: 'KIHT'.
+	self addRule: '(CREA)' replacement: 'KRIYEY'.
+	self addRule: '(C)' replacement: 'K'.
 ]
 
 { #category : 'accessing' }
-H class >> printRules [
+C class >> printRules [
     "Print all rules added to a letter's ruleset"
     | rules |
     Transcript open.

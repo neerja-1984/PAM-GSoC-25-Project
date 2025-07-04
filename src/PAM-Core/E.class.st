@@ -30,7 +30,7 @@ E class >> initialiseRules [
     "Initialize rules for letter E"
     self classPool at: #RulesDictionary put: OrderedCollection new.
 
-    "Add all E rules (with '=' removed from patterns)"
+    "Add all E rules"
     self addRule: ' (E) ' replacement: 'IYIY4'.
     self addRule: '#:(E)' replacement: ''.
     self addRule: '\:^(E)' replacement: ''.

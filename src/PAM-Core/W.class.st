@@ -1,5 +1,5 @@
 Class {
-	#name : 'H',
+	#name : 'W',
 	#superclass : 'LetterRules',
 	#classVars : [
 		'RulesDictionary'
@@ -13,7 +13,7 @@ Class {
 }
 
 { #category : 'accessing' }
-H class >> getAllRules [
+W class >> getAllRules [
   "gets all rules of the subclass it is called for"
     (self classPool includesKey: #RulesDictionary)
         ifFalse: [ Error new signal: 'RulesDictionary not defined in subclass.' ].
@@ -26,23 +26,35 @@ H class >> getAllRules [
 ]
 
 { #category : 'accessing' }
-H class >> initialiseRules [
-    "Initialize rules for letter H"
-    self classPool at: #RulesDictionary put: OrderedCollection new.
+W class >> initialiseRules [
 
-    "Add all H rules "
-    self addRule: ' (H) ' replacement: 'EY4CH'.
-    self addRule: ' (HAV)' replacement: '/HAE6V'.
-    self addRule: ' (HERE)' replacement: '/HIYR'.
-    self addRule: ' (HOUR)' replacement: 'AW5ER'.
-    self addRule: '(HOW)' replacement: '/HAW'.
-    self addRule: '(H)#' replacement: '/H'.
-    self addRule: '(H)' replacement: ''.
+	self classPool at: #RulesDictionary put: OrderedCollection new.
 
+	self addRule: ' (W)' replacement: 'DAH4BULYUW'.
+	self addRule: ' (WERE)' replacement: 'WER'.
+	self addRule: '(WA)SH' replacement: 'WAA'.
+	self addRule: '(WA)ST' replacement: 'WEY'.
+	self addRule: '(WA)S' replacement: 'WAH'.
+	self addRule: '(WA)T' replacement: 'WAA'.
+	self addRule: '(WHERE)' replacement: 'WHEHR'.
+	self addRule: '(WHAT)' replacement: 'WHAHT'.
+	self addRule: '(WHOL)' replacement: '/HOWL'.
+	self addRule: '(WHO)' replacement: '/HUW'.
+	self addRule: '(WH)' replacement: 'WH'.
+	self addRule: '(WAR)#' replacement: 'WEHR'.
+	self addRule: '(WAR)' replacement: 'WAOR'.
+	self addRule: '(WOR)^' replacement: 'WER'.
+	self addRule: '(WR)' replacement: 'R'.
+	self addRule: '(WOM)A' replacement: 'WUHM'.
+	self addRule: '(WOM)E' replacement: 'WIHM'.
+	self addRule: '(WEA)R' replacement: 'WEH'.
+	self addRule: '(WANT)' replacement: 'WAA5NT'.
+	self addRule: 'ANS(WER)' replacement: 'ER'.
+	self addRule: '(W)' replacement: 'W'.
 ]
 
 { #category : 'accessing' }
-H class >> printRules [
+W class >> printRules [
     "Print all rules added to a letter's ruleset"
     | rules |
     Transcript open.

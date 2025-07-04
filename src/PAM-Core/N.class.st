@@ -1,5 +1,5 @@
 Class {
-	#name : 'H',
+	#name : 'N',
 	#superclass : 'LetterRules',
 	#classVars : [
 		'RulesDictionary'
@@ -13,7 +13,7 @@ Class {
 }
 
 { #category : 'accessing' }
-H class >> getAllRules [
+N class >> getAllRules [
   "gets all rules of the subclass it is called for"
     (self classPool includesKey: #RulesDictionary)
         ifFalse: [ Error new signal: 'RulesDictionary not defined in subclass.' ].
@@ -26,23 +26,24 @@ H class >> getAllRules [
 ]
 
 { #category : 'accessing' }
-H class >> initialiseRules [
-    "Initialize rules for letter H"
-    self classPool at: #RulesDictionary put: OrderedCollection new.
+N class >> initialiseRules [
 
-    "Add all H rules "
-    self addRule: ' (H) ' replacement: 'EY4CH'.
-    self addRule: ' (HAV)' replacement: '/HAE6V'.
-    self addRule: ' (HERE)' replacement: '/HIYR'.
-    self addRule: ' (HOUR)' replacement: 'AW5ER'.
-    self addRule: '(HOW)' replacement: '/HAW'.
-    self addRule: '(H)#' replacement: '/H'.
-    self addRule: '(H)' replacement: ''.
+	self classPool at: #RulesDictionary put: OrderedCollection new.
 
+	self addRule: 'E(NG)+' replacement: 'NJ'.
+	self addRule: '(NG)R' replacement: 'NXG'.
+	self addRule: '(NG)#' replacement: 'NXG'.
+	self addRule: '(NGL)%' replacement: 'NXGUL'.
+	self addRule: '(NG)' replacement: 'NX'.
+	self addRule: '(NK)' replacement: 'NXK'.
+	self addRule: ' (NOW)' replacement: 'NAW4'.
+	self addRule: 'N(N)' replacement: ''.
+	self addRule: '(NON)E' replacement: 'NAH4N'.
+	self addRule: '(N)' replacement: 'N'.
 ]
 
 { #category : 'accessing' }
-H class >> printRules [
+N class >> printRules [
     "Print all rules added to a letter's ruleset"
     | rules |
     Transcript open.

@@ -30,7 +30,7 @@ O class >> initialiseRules [
     "Initialize rules for letter O"
     self classPool at: #RulesDictionary put: OrderedCollection new.
 
-    "Add all O rules (with '=' removed from patterns)"
+    "Add all O rules"
     self addRule: ' (O) ' replacement: 'OH4W'.
     self addRule: '(OF)' replacement: 'AHV'.
     self addRule: ' (OH)' replacement: 'OW5'.
@@ -89,7 +89,7 @@ O class >> initialiseRules [
     self addRule: '^R(O):#' replacement: 'OW5'.
     self addRule: '(OSS)' replacement: 'AO5S'.
     self addRule: '#:^(OM)' replacement: 'AHM'.
-    self addRule: '(O)' replacement: 'AA'.
+    self addRule: '(O)' replacement: 'OW'.
 
 ]
 

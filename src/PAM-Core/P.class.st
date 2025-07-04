@@ -1,5 +1,5 @@
 Class {
-	#name : 'H',
+	#name : 'P',
 	#superclass : 'LetterRules',
 	#classVars : [
 		'RulesDictionary'
@@ -13,7 +13,7 @@ Class {
 }
 
 { #category : 'accessing' }
-H class >> getAllRules [
+P class >> getAllRules [
   "gets all rules of the subclass it is called for"
     (self classPool includesKey: #RulesDictionary)
         ifFalse: [ Error new signal: 'RulesDictionary not defined in subclass.' ].
@@ -26,23 +26,26 @@ H class >> getAllRules [
 ]
 
 { #category : 'accessing' }
-H class >> initialiseRules [
-    "Initialize rules for letter H"
+P class >> initialiseRules [
+    "Initialize rules for letter P"
     self classPool at: #RulesDictionary put: OrderedCollection new.
 
-    "Add all H rules "
-    self addRule: ' (H) ' replacement: 'EY4CH'.
-    self addRule: ' (HAV)' replacement: '/HAE6V'.
-    self addRule: ' (HERE)' replacement: '/HIYR'.
-    self addRule: ' (HOUR)' replacement: 'AW5ER'.
-    self addRule: '(HOW)' replacement: '/HAW'.
-    self addRule: '(H)#' replacement: '/H'.
-    self addRule: '(H)' replacement: ''.
+    "Add all P rules"
+	self addRule: ' (P)' replacement: 'PIY4'.
+	self addRule: '(PH)' replacement: 'F'.
+	self addRule: '(PEOPL)' replacement: 'PIY5PUL'.
+	self addRule: '(POW)' replacement: 'PAW4'.
+	self addRule: '(PUT)' replacement: 'PUHT'.
+	self addRule: '(P)P' replacement: ''.
+	self addRule: '(P)S' replacement: ''.
+	self addRule: '(P)N' replacement: ''.
+	self addRule: '(PROF.)' replacement: 'PROHFEH4SER'.
+	self addRule: '(P)' replacement: 'P'.
 
 ]
 
 { #category : 'accessing' }
-H class >> printRules [
+P class >> printRules [
     "Print all rules added to a letter's ruleset"
     | rules |
     Transcript open.

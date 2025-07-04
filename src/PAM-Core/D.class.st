@@ -1,5 +1,5 @@
 Class {
-	#name : 'H',
+	#name : 'D',
 	#superclass : 'LetterRules',
 	#classVars : [
 		'RulesDictionary'
@@ -13,7 +13,7 @@ Class {
 }
 
 { #category : 'accessing' }
-H class >> getAllRules [
+D class >> getAllRules [
   "gets all rules of the subclass it is called for"
     (self classPool includesKey: #RulesDictionary)
         ifFalse: [ Error new signal: 'RulesDictionary not defined in subclass.' ].
@@ -26,23 +26,28 @@ H class >> getAllRules [
 ]
 
 { #category : 'accessing' }
-H class >> initialiseRules [
-    "Initialize rules for letter H"
-    self classPool at: #RulesDictionary put: OrderedCollection new.
+D class >> initialiseRules [
 
-    "Add all H rules "
-    self addRule: ' (H) ' replacement: 'EY4CH'.
-    self addRule: ' (HAV)' replacement: '/HAE6V'.
-    self addRule: ' (HERE)' replacement: '/HIYR'.
-    self addRule: ' (HOUR)' replacement: 'AW5ER'.
-    self addRule: '(HOW)' replacement: '/HAW'.
-    self addRule: '(H)#' replacement: '/H'.
-    self addRule: '(H)' replacement: ''.
+	self classPool at: #RulesDictionary put: OrderedCollection new.
 
+	self addRule: ' (D)' replacement: 'DIY4'.
+	self addRule: ' (DR.)' replacement: 'DAA4KTER'.
+	self addRule: '#:(DED)' replacement: 'DIHD'.
+	self addRule: '.E(D)' replacement: 'D'.
+	self addRule: '#:^E(D)' replacement: 'T'.
+	self addRule: ' (DE)^#' replacement: 'DIH'.
+	self addRule: ' (DO)' replacement: 'DUW'.
+	self addRule: ' (DOES)' replacement: 'DAHZ'.
+	self addRule: '(DONE)' replacement: 'DAH5N'.
+	self addRule: '(DOING)' replacement: 'DUW4IHNX'.
+	self addRule: ' (DOW)' replacement: 'DAW'.
+	self addRule: '#(DU)A' replacement: 'JUW'.
+	self addRule: '#(DU)^#' replacement: 'JAX'.
+	self addRule: '(D)' replacement: 'D'.
 ]
 
 { #category : 'accessing' }
-H class >> printRules [
+D class >> printRules [
     "Print all rules added to a letter's ruleset"
     | rules |
     Transcript open.

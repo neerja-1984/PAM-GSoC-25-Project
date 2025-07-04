@@ -1,5 +1,5 @@
 Class {
-	#name : 'H',
+	#name : 'Y',
 	#superclass : 'LetterRules',
 	#classVars : [
 		'RulesDictionary'
@@ -13,7 +13,7 @@ Class {
 }
 
 { #category : 'accessing' }
-H class >> getAllRules [
+Y class >> getAllRules [
   "gets all rules of the subclass it is called for"
     (self classPool includesKey: #RulesDictionary)
         ifFalse: [ Error new signal: 'RulesDictionary not defined in subclass.' ].
@@ -26,23 +26,29 @@ H class >> getAllRules [
 ]
 
 { #category : 'accessing' }
-H class >> initialiseRules [
-    "Initialize rules for letter H"
-    self classPool at: #RulesDictionary put: OrderedCollection new.
+Y class >> initialiseRules [
 
-    "Add all H rules "
-    self addRule: ' (H) ' replacement: 'EY4CH'.
-    self addRule: ' (HAV)' replacement: '/HAE6V'.
-    self addRule: ' (HERE)' replacement: '/HIYR'.
-    self addRule: ' (HOUR)' replacement: 'AW5ER'.
-    self addRule: '(HOW)' replacement: '/HAW'.
-    self addRule: '(H)#' replacement: '/H'.
-    self addRule: '(H)' replacement: ''.
+	self classPool at: #RulesDictionary put: OrderedCollection new.
 
+	self addRule: ' (Y)' replacement: 'WAY4'.
+	self addRule: '(YOUNG)' replacement: 'YAHNX'.
+	self addRule: ' (YOUR)' replacement: 'YOHR'.
+	self addRule: ' (YOU)' replacement: 'YUW'.
+	self addRule: ' (YES)' replacement: 'YEHS'.
+	self addRule: ' (Y)' replacement: 'Y'.
+	self addRule: 'F(Y)' replacement: 'AY'.
+	self addRule: 'PS(YCH)' replacement: 'AYK'.
+	self addRule: '#:^(Y)' replacement: 'IY'.
+	self addRule: '#:^(Y)I' replacement: 'IY'.
+	self addRule: ' :(Y) ' replacement: 'AY'.
+	self addRule: ' :(Y)#' replacement: 'AY'.
+	self addRule: ' :(Y)^+:#' replacement: 'IH'.
+	self addRule: ' :(Y)^#' replacement: 'AY'.
+	self addRule: '(Y)' replacement: 'IH'.
 ]
 
 { #category : 'accessing' }
-H class >> printRules [
+Y class >> printRules [
     "Print all rules added to a letter's ruleset"
     | rules |
     Transcript open.
