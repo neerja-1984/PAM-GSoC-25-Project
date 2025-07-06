@@ -38,9 +38,6 @@ Design Notes:
 Class {
 	#name : 'Reciter',
 	#superclass : 'Object',
-	#instVars : [
-		'debugMode'
-	],
 	#category : 'PAM-Core-Reciter',
 	#package : 'PAM-Core',
 	#tag : 'Reciter'
@@ -108,13 +105,6 @@ Reciter class >> checkSuffix: suffix in: text at: position [
     ].
     
     ^ rulePos > suffix size
-]
-
-{ #category : 'class initialization' }
-Reciter class >> initialize [
-    "Initialize the reciter with default settings"
-    "debugMode := true"
-
 ]
 
 { #category : 'execution' }
