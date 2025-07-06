@@ -113,7 +113,7 @@ Reciter class >> checkSuffix: suffix in: text at: position [
 { #category : 'class initialization' }
 Reciter class >> initialize [
     "Initialize the reciter with default settings"
-    "debugMode := false"
+    "debugMode := true"
 
 ]
 
@@ -121,7 +121,7 @@ Reciter class >> initialize [
 Reciter class >> textToPhonemes: input [
     "Convert input text to phonemes"
     | text output pos charFlags rule currentChar |
-    text := '  ',input asUppercase. "Pad with space to justify start of a word"
+    text := '   ',input asUppercase. "Pad with space to justify start of a word"
     output := ''.
     pos := 1.
 

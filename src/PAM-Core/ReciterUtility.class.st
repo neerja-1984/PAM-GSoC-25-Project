@@ -109,71 +109,83 @@ ReciterUtility class >> matchSpecialCharacter: char in: text at: position direct
     
     nextPos := position + dir.
 
-    char = $  ifTrue: [  "Space - check non-alphabetic"
+	"if ruleChar is a space .. is the textChar a non alphabetic"
+    char = $  ifTrue: [  
         ^ (((Flags flagsFor: (text at: position ifAbsent: [ $  ])) anyMask: 128) not)
             ifTrue: [ nextPos ]
-            ifFalse: [ nil ]  "FLAG_ALPHA_OR_QUOT"
+            ifFalse: [ nil ]  
     ].
 
-    char = $# ifTrue: [  "Vowel or Y"
+
+	"if ruleChar is a # .. is the textChar a VowelOrY"
+    char = $# ifTrue: [
         ^ ((Flags flagsFor: (text at: position ifAbsent: [ $  ])) anyMask: 64)
             ifTrue: [ nextPos ]
-            ifFalse: [ nil ]  "FLAG_VOWEL_OR_Y"
+            ifFalse: [ nil ] 
     ].
 
-    char = $. ifTrue: [  "Special flag"
+	"placeholder rule"
+    char = $. ifTrue: [ 
         ^ ((Flags flagsFor: (text at: position ifAbsent: [ $  ])) anyMask: 8)
             ifTrue: [ nextPos ]
-            ifFalse: [ nil ]  "FLAG_0X08"
+            ifFalse: [ nil ] 
     ].
 
-    char = $& ifTrue: [  "Diphthong or digraph"
-        ^ (((Flags flagsFor: (text at: position ifAbsent: [ $  ])) anyMask: 16)
-            or: [
-                position > 1 and: [
-                    prevChar := text at: position - 1 ifAbsent: [ $  ].
-                    {prevChar asString, (text at: position) asString}
-                        includesAnyOf: #('HC' 'HS')
-                ]
-            ])
-            ifTrue: [ nextPos ]
-            ifFalse: [ nil ]  "FLAG_DIPHTHONG or HC/HS"
-    ].
+	"if ruleChar is a & .. is the textChar a fricative. If there is H .. check if it includes HC / HS"
+	char = $& ifTrue: [
+ 	 	^ (((Flags flagsFor: (text at: position ifAbsent: [ $  ])) anyMask: 16)
+  		  	or: [
+    	  		position > 1 and: 
+			[
+     		   	prevChar := text at: position - 1 ifAbsent: [ $  ].
+      		  #('HC' 'HS') includes: (prevChar asString , (text at: position) asString)
+    	   ]
+   	 	])
+  	  ifTrue: [ nextPos ]
+ 	   ifFalse: [ nil ]
+	].
 
-    char = $@ ifTrue: [  "Voiced, not H"
+	"if ruleChar is a @ .. is the textChar a Voiced but not having H"
+    char = $@ ifTrue: [  
         currentChar := text at: position ifAbsent: [ $  ].
         ^ (((Flags flagsFor: currentChar) anyMask: 4)
             and: [ currentChar ~= $H ])
             ifTrue: [ nextPos ]
-            ifFalse: [ nil ]  "FLAG_VOICED"
+            ifFalse: [ nil ]
     ].
 
-    char = $^ ifTrue: [  "Consonant"
+	"if ruleChar is a ^ .. is the textChar a consonant"
+    char = $^ ifTrue: [ 
         ^ ((Flags flagsFor: (text at: position ifAbsent: [ $  ])) anyMask: 32)
             ifTrue: [ nextPos ]
-            ifFalse: [ nil ]  "FLAG_CONSONANT"
+            ifFalse: [ nil ] 
     ].
 
+	"if ruleChar is a + .. is the textChar a voiced"
     char = $+ ifTrue: [  "Voiced"
         ^ ((Flags flagsFor: (text at: position ifAbsent: [ $  ])) anyMask: 4)
             ifTrue: [ nextPos ]
             ifFalse: [ nil ]  "FLAG_VOICED"
     ].
 
-    char = $: ifTrue: [  "Vowel but not Y"
+	"if ruleChar is a : .. is the textChar a Vowel excluding Y"
+    char = $: ifTrue: [ 
         currentChar := text at: position ifAbsent: [ $  ].
         ^ (((Flags flagsFor: currentChar) anyMask: 64) and: [ currentChar ~= $Y ])
             ifTrue: [ nextPos ]
-            ifFalse: [ nil ]  "FLAG_VOWEL_OR_Y excluding Y"
+            ifFalse: [ nil ] 
     ].
 
-    char = $' ifTrue: [  "Apostrophe"
+	"if ruleChar is a ' .. is the textChar '"
+    char = $' ifTrue: [
         ^ ((text at: position ifAbsent: [ $  ]) = $')
             ifTrue: [ nextPos ]
             ifFalse: [ nil ]
     ].
 
-    ^ nextPos  "Default: move to next/previous position"
+	"Of either rule matches in rule and text -- return next/previous position"
+	"else return nill"
+    ^ nextPos
 
 ]
 

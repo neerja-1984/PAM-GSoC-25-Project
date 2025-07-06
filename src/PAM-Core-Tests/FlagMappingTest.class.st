@@ -1,5 +1,5 @@
 Class {
-	#name : 'CharacterToFlagMappingTest',
+	#name : 'FlagMappingTest',
 	#superclass : 'TestCase',
 	#category : 'PAM-Core-Tests-Reciter',
 	#package : 'PAM-Core-Tests',
@@ -7,14 +7,14 @@ Class {
 }
 
 { #category : 'tests' }
-CharacterToFlagMappingTest >> testBacktickMapsTo130 [
+FlagMappingTest >> testBacktickMapsTo130 [
     | map |
     map := Flags mappingCharactersToFlag.
     self assert: (map at: $') equals: (128 bitOr: 2).
 ]
 
 { #category : 'tests' }
-CharacterToFlagMappingTest >> testConsonantsValues [
+FlagMappingTest >> testConsonantsValues [
 
 	| map |
 	map := Flags mappingCharactersToFlag.
@@ -25,7 +25,7 @@ CharacterToFlagMappingTest >> testConsonantsValues [
 ]
 
 { #category : 'tests' }
-CharacterToFlagMappingTest >> testFricativeConsonantValues [
+FlagMappingTest >> testFricativeConsonantValues [
 
 	| map |
 	map := Flags mappingCharactersToFlag.
@@ -34,7 +34,7 @@ CharacterToFlagMappingTest >> testFricativeConsonantValues [
 ]
 
 { #category : 'tests' }
-CharacterToFlagMappingTest >> testNumbersMapTo3 [
+FlagMappingTest >> testNumbersMapTo3 [
     | map |
     map := Flags mappingCharactersToFlag.
     ($0 to: $9) do: 
@@ -42,7 +42,7 @@ CharacterToFlagMappingTest >> testNumbersMapTo3 [
 ]
 
 { #category : 'tests' }
-CharacterToFlagMappingTest >> testPunctuationMapsTo2 [
+FlagMappingTest >> testPunctuationMapsTo2 [
     | map |
     map := Flags mappingCharactersToFlag.
     #($! $" $# $$ $% $& $* $+ $, $- $. $/ $: $; $< $= $> $? $@ $^) do: 
@@ -50,7 +50,7 @@ CharacterToFlagMappingTest >> testPunctuationMapsTo2 [
 ]
 
 { #category : 'tests' }
-CharacterToFlagMappingTest >> testSpaceAndBracketsMapTo0 [
+FlagMappingTest >> testSpaceAndBracketsMapTo0 [
     | map |
     map := Flags mappingCharactersToFlag.
     self assert: (map at: Character space) equals: 0.
@@ -63,7 +63,7 @@ CharacterToFlagMappingTest >> testSpaceAndBracketsMapTo0 [
 ]
 
 { #category : 'tests' }
-CharacterToFlagMappingTest >> testVoicedConsonantValues [
+FlagMappingTest >> testVoicedConsonantValues [
 
 	| map |
 	map := Flags mappingCharactersToFlag.
@@ -72,7 +72,7 @@ CharacterToFlagMappingTest >> testVoicedConsonantValues [
 ]
 
 { #category : 'tests' }
-CharacterToFlagMappingTest >> testVowelsMapTo192 [
+FlagMappingTest >> testVowelsMapTo192 [
     | map |
     map := Flags mappingCharactersToFlag.
     #($A $E $I $O $U $Y) do: 
