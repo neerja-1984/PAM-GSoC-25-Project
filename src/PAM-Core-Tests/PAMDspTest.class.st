@@ -10,7 +10,8 @@ Class {
 PAMDspTest >> testStereoOutputNotNull [
     | player |
 
-	"Test that stereo output is not null"
+    "Test that stereo output is not null"
     player := PAMDsp new.
-    self deny: player stereo asDsp isNull.
+    player initializeNumbersFolder.
+    self deny: player dsp isNull.
 ]
