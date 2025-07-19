@@ -63,7 +63,7 @@ ReciterUtility class >> findMatchingRuleIn: text at: position [
     
     "Return nil if no rules match"
     matchingRules isEmpty ifTrue: [ ^ nil ].
-    
+
     "Find the rule with the longest pattern: which will represent the correct rule which is to be mapped"
     ^ matchingRules inject: matchingRules first into: [ :longest :rule |
         rule pattern size > longest pattern size ifTrue: [ rule ] ifFalse: [ longest ]
