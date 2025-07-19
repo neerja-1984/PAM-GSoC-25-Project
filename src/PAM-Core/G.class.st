@@ -30,6 +30,7 @@ G class >> initialiseRules [
 
 	self classPool at: #RulesDictionary put: OrderedCollection new.
 	
+	self addRule: '(G)' replacement: 'G'.
 	self addRule: ' (G)' replacement: 'JIY4'.
 	self addRule: '(GIV)' replacement: 'GIH5V'.
 	self addRule: ' (G)I^' replacement: 'G'.
@@ -42,7 +43,6 @@ G class >> initialiseRules [
 	self addRule: '(GON)E' replacement: 'GAO5N'.
 	self addRule: '#(GH)' replacement: ''.
 	self addRule: ' (GN)' replacement: 'N'.
-	self addRule: '(G)' replacement: 'G'.
 ]
 
 { #category : 'accessing' }

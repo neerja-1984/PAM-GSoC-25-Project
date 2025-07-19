@@ -31,6 +31,7 @@ P class >> initialiseRules [
     self classPool at: #RulesDictionary put: OrderedCollection new.
 
     "Add all P rules"
+	self addRule: '(P)' replacement: 'P'.
 	self addRule: ' (P)' replacement: 'PIY4'.
 	self addRule: '(PH)' replacement: 'F'.
 	self addRule: '(PEOPL)' replacement: 'PIY5PUL'.
@@ -40,7 +41,6 @@ P class >> initialiseRules [
 	self addRule: '(P)S' replacement: ''.
 	self addRule: '(P)N' replacement: ''.
 	self addRule: '(PROF.)' replacement: 'PROHFEH4SER'.
-	self addRule: '(P)' replacement: 'P'.
 
 ]
 

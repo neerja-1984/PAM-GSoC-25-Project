@@ -30,6 +30,7 @@ N class >> initialiseRules [
 
 	self classPool at: #RulesDictionary put: OrderedCollection new.
 
+	self addRule: '(N)' replacement: 'N'.
 	self addRule: 'E(NG)+' replacement: 'NJ'.
 	self addRule: '(NG)R' replacement: 'NXG'.
 	self addRule: '(NG)#' replacement: 'NXG'.
@@ -39,7 +40,7 @@ N class >> initialiseRules [
 	self addRule: ' (NOW)' replacement: 'NAW4'.
 	self addRule: 'N(N)' replacement: ''.
 	self addRule: '(NON)E' replacement: 'NAH4N'.
-	self addRule: '(N)' replacement: 'N'.
+	self addRule: ' (N)' replacement: 'EH4N'.
 ]
 
 { #category : 'accessing' }

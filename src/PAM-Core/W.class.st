@@ -30,6 +30,7 @@ W class >> initialiseRules [
 
 	self classPool at: #RulesDictionary put: OrderedCollection new.
 
+	self addRule: '(W)' replacement: 'W'.
 	self addRule: ' (W)' replacement: 'DAH4BULYUW'.
 	self addRule: ' (WERE)' replacement: 'WER'.
 	self addRule: '(WA)SH' replacement: 'WAA'.
@@ -50,7 +51,6 @@ W class >> initialiseRules [
 	self addRule: '(WEA)R' replacement: 'WEH'.
 	self addRule: '(WANT)' replacement: 'WAA5NT'.
 	self addRule: 'ANS(WER)' replacement: 'ER'.
-	self addRule: '(W)' replacement: 'W'.
 ]
 
 { #category : 'accessing' }

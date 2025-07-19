@@ -30,6 +30,7 @@ T class >> initialiseRules [
 
 	self classPool at: #RulesDictionary put: OrderedCollection new.
 	
+	self addRule: '(T)' replacement: 'T'.
 	self addRule: ' (T)' replacement: 'TIY4'.
 	self addRule: ' (THE) #' replacement: 'DHIY'.
 	self addRule: ' (THE)' replacement: 'DHAX'.
@@ -61,7 +62,6 @@ T class >> initialiseRules [
 	self addRule: '(TU)A' replacement: 'CHUW'.
 	self addRule: ' (TWO)' replacement: 'TUW'.
 	self addRule: '&(T)EN ' replacement: ''.
-	self addRule: '(T)' replacement: 'T'.
 ]
 
 { #category : 'accessing' }

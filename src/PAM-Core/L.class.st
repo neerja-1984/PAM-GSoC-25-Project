@@ -31,13 +31,13 @@ L class >> initialiseRules [
     self classPool at: #RulesDictionary put: OrderedCollection new.
 
     "Add all L rules"
+    self addRule: '(L)' replacement: 'L'.
     self addRule: ' (L) ' replacement: 'EH4L'.
     self addRule: '(LO)C#' replacement: 'LOW'.
     self addRule: 'L(L)' replacement: ''.
     self addRule: '#:^(L)%' replacement: 'UL'.
     self addRule: '(LEAD)' replacement: 'LIYD'.
     self addRule: ' (LAUGH)' replacement: 'LAE4F'.
-    self addRule: '(L)' replacement: 'L'.
 
 ]
 

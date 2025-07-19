@@ -30,6 +30,7 @@ M class >> initialiseRules [
 
 	self classPool at: #RulesDictionary put: OrderedCollection new.
 	
+	self addRule: '(M)' replacement: 'M'.
 	self addRule: ' (M)' replacement: 'EH4M'.
 	self addRule: ' (MR.)' replacement: 'MIH4STER'.
 	self addRule: ' (MS.)' replacement: 'MIH5Z'.
@@ -37,7 +38,6 @@ M class >> initialiseRules [
 	self addRule: '(MOV)' replacement: 'MUW4V'.
 	self addRule: '(MACHIN)' replacement: 'MAHSHIY5N'.
 	self addRule: 'M(M)' replacement: ''.
-	self addRule: '(M)' replacement: 'M'.
 ]
 
 { #category : 'accessing' }

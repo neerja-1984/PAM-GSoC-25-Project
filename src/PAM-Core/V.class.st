@@ -30,9 +30,9 @@ V class >> initialiseRules [
 
 	self classPool at: #RulesDictionary put: OrderedCollection new.
 
+	self addRule: '(V)' replacement: 'V'.
 	self addRule: ' (V)' replacement: 'VIY4'.
 	self addRule: '(VIEW)' replacement: 'VYUW5'.
-	self addRule: '(V)' replacement: 'V'.
 ]
 
 { #category : 'accessing' }

@@ -111,9 +111,9 @@ Reciter class >> checkSuffix: suffix in: text at: position [
 Reciter class >> textToPhonemes: input [
     "Convert input text to phonemes"
     | text output pos charFlags rule currentChar |
-    text := '  ',input asUppercase. "Pad with space to justify start of a word"
+    text := ' ',input asUppercase. "Pad with space to justify start of a word"
     output := ''.
-    pos := 1.
+    pos := 2.
 
     [ pos <= text size ] whileTrue: [
         currentChar := text at: pos.
@@ -136,7 +136,6 @@ Reciter class >> textToPhonemes: input [
         (charFlags = 0) ifTrue: [
             output := output , ' '.
             ReciterUtility log: 'Skipping unknown character: ' , currentChar asString.
-            pos := pos + 1.
         ].
 
         "4. Handle non-alphabetic characters (except quotes)"

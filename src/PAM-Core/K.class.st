@@ -30,9 +30,9 @@ K class >> initialiseRules [
 
 	self classPool at: #RulesDictionary put: OrderedCollection new.
 
+	self addRule: '(K)' replacement: 'K'.
 	self addRule: ' (K)' replacement: 'KEY4'.
 	self addRule: ' (K)N' replacement: ''.
-	self addRule: '(K)' replacement: 'K'.
 ]
 
 { #category : 'accessing' }

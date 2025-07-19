@@ -30,6 +30,7 @@ S class >> initialiseRules [
 
 	self classPool at: #RulesDictionary put: OrderedCollection new.
 
+	self addRule: '(S)' replacement: 'S'.
 	self addRule: ' (S)' replacement: 'EH4S'.
 	self addRule: '(SH)' replacement: 'SH'.
 	self addRule: '#(SION)' replacement: 'ZHUN'.
@@ -54,7 +55,6 @@ S class >> initialiseRules [
 	self addRule: '#(SM)' replacement: 'ZUM'.
 	self addRule: '#(SN)' replacement: 'ZUM'.
 	self addRule: '(STLE)' replacement: 'SUL'.
-	self addRule: '(S)' replacement: 'S'.
 ]
 
 { #category : 'accessing' }

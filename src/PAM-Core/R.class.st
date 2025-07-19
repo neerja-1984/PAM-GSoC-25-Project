@@ -30,10 +30,10 @@ R class >> initialiseRules [
 
 	self classPool at: #RulesDictionary put: OrderedCollection new.
 
+	self addRule: '(R)' replacement: 'R'.
 	self addRule: ' (R)' replacement: 'AA5R'.
 	self addRule: ' (RE)^#' replacement: 'RIY'.
 	self addRule: '(R)R' replacement: ''.
-	self addRule: '(R)' replacement: 'R'.
 ]
 
 { #category : 'accessing' }

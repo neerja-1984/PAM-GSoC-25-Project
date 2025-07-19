@@ -30,8 +30,8 @@ J class >> initialiseRules [
 
 	self classPool at: #RulesDictionary put: OrderedCollection new.
 
-	self addRule: ' (J)' replacement: 'JEY4'.
 	self addRule: '(J)' replacement: 'J'.
+	self addRule: ' (J)' replacement: 'JEY4'.
 ]
 
 { #category : 'accessing' }

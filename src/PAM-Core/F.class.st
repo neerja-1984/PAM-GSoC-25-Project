@@ -30,12 +30,12 @@ F class >> initialiseRules [
 
 	self classPool at: #RulesDictionary put: OrderedCollection new.
 
-	self addRule: ' (F)' replacement: 'EH4F'.
+	self addRule: '(F)' replacement: 'F'.
 	self addRule: '(FUL)' replacement: 'FUHL'.
 	self addRule: '(FRIEND)' replacement: 'FREH5ND'.
 	self addRule: '(FATHER)' replacement: 'FAA4DHER'.
 	self addRule: '(F)F' replacement: ''.
-	self addRule: '(F)' replacement: 'F'.
+	self addRule: ' (F)' replacement: 'EH4F'.
 ]
 
 { #category : 'accessing' }
