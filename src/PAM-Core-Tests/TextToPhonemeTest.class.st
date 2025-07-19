@@ -15,6 +15,7 @@ Class {
 { #category : 'running' }
 TextToPhonemeTest >> setUp [
 	super setUp.
+	AlphabetUtility initializeDictionary.
 	reciter := Reciter new.
 ]
 
