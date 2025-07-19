@@ -35,9 +35,11 @@ PAMDsp >> initializeNumbersFolder [
 
 { #category : 'initialization' }
 PAMDsp >> initilizeWithLabel: aLabel folderName: aFolderName [ 
-	"a generalised method to set label and folder Name in Windows environment !"
-    | path |
-    path := FileLocator imageDirectory asAbsolute pathString , '\' , aFolderName.
+	"a generalised method to set label and folder Name in any OS environment !"
+    | path pathSeparator|
+	 pathSeparator:= '/'.
+	 OSPlatform current isWindows ifTrue: [ pathSeparator:= '\'].
+    path := FileLocator imageDirectory asAbsolute pathString , pathSeparator , aFolderName.
     
     samplePlayer := TpSampler new 
         label: aLabel; 
