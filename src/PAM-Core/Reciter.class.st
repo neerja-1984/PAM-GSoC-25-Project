@@ -53,8 +53,8 @@ Reciter class >> checkPrefix: prefix in: text at: position [
     [rulePos > 0 and: [pos > 0]] whileTrue: [
         | ruleChar textChar |
         ruleChar := prefix at: rulePos.
-        textChar := text at: pos.
-        
+        textChar := text at: pos. 
+         
         (ReciterUtility isSpecialCharacter: ruleChar) 
             ifTrue: [ 
                 | result |
@@ -111,7 +111,7 @@ Reciter class >> checkSuffix: suffix in: text at: position [
 Reciter class >> textToPhonemes: input [
     "Convert input text to phonemes"
     | text output pos charFlags rule currentChar |
-    text := '   ',input asUppercase. "Pad with space to justify start of a word"
+    text := '  ',input asUppercase. "Pad with space to justify start of a word"
     output := ''.
     pos := 1.
 
