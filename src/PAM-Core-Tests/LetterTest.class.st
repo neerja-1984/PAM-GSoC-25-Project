@@ -20,6 +20,7 @@ LetterTest >> setUp [
     "Backup the current RulesDictionary"
     super setUp.
     originalRules := (A classPool at: #RulesDictionary) collect: [:each | each copy]. 
+	 AlphabetUtility initializeDictionary.
     self resetRulesUtility.
 ]
 
