@@ -8,6 +8,6 @@ Class {
 
 { #category : 'pragmas' }
 Renderer >> fly [
-<flyPragma>
-    ^ Transcript open.
+	<script: 'self new fly'>
+    ^ Transcript open; show: 'Fly Pragma Works'.
 ]
