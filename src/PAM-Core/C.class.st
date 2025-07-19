@@ -31,6 +31,8 @@ C class >> initialiseRules [
     self classPool at: #RulesDictionary put: OrderedCollection new.
 
     "Add all C rules"
+	self addRule: '(C)+' replacement: 'S'.
+	self addRule: '(C)' replacement: 'K'.
 	self addRule: ' (C)' replacement: 'SIY4'.
 	self addRule: ' (CH)^' replacement: 'K'.
 	self addRule: '^E(CH)' replacement: 'K'.
@@ -41,13 +43,11 @@ C class >> initialiseRules [
 	self addRule: '(CI)O' replacement: 'SH'.
 	self addRule: '(CI)EN' replacement: 'SH'.
 	self addRule: '(CITY)' replacement: 'SIHTIY'.
-	self addRule: '(C)+' replacement: 'S'.
 	self addRule: '(CK)' replacement: 'K'.
 	self addRule: '(COMMODORE)' replacement: 'KAA4MAHDOHR'.
 	self addRule: '(COM)' replacement: 'KAHM'.
 	self addRule: '(CUIT)' replacement: 'KIHT'.
 	self addRule: '(CREA)' replacement: 'KRIYEY'.
-	self addRule: '(C)' replacement: 'K'.
 ]
 
 { #category : 'accessing' }

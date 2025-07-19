@@ -48,14 +48,14 @@ TextToPhonemeTest >> testBibliography [
 ]
 
 { #category : 'tests' }
-TextToPhonemeTest >> testCelsius [
+TextToPhonemeTest >> testChamomile [
 
 	| phonemeOutput inputText  |
-	inputText := 'Celsius'.
+	inputText := 'Chamomile'.
 	
 	phonemeOutput := Reciter textToPhonemes: inputText.
 	
-	self assert: phonemeOutput equals: 'SIY4EHLZIHYUWS'.
+	self assert: phonemeOutput equals: 'CHAEMOWMIHLEH'.
 	
 	
 	
@@ -111,7 +111,7 @@ TextToPhonemeTest >> testFluorescent [
 	
 	phonemeOutput := Reciter textToPhonemes: inputText.
 	
-	self assert: phonemeOutput equals: 'FLUAOREHSCEHNT'.
+	self assert: phonemeOutput equals: 'FLUWAOREHZKEHNT'.
 	
 	
 	
@@ -125,7 +125,7 @@ TextToPhonemeTest >> testGasoline [
 	
 	phonemeOutput := Reciter textToPhonemes: inputText.
 	
-	self assert: phonemeOutput equals: 'GEY4SAALINEH'.
+	self assert: phonemeOutput equals: 'GEY4SOWLIHNEH'.
 	
 	
 	
@@ -167,7 +167,7 @@ TextToPhonemeTest >> testJazz [
 	
 	phonemeOutput := Reciter textToPhonemes: inputText.
 	
-	self assert: phonemeOutput equals: 'JEY4AEZZ'.
+	self assert: phonemeOutput equals: 'JAEZZ'.
 	
 	
 	
@@ -181,7 +181,7 @@ TextToPhonemeTest >> testKnife [
 	
 	phonemeOutput := Reciter textToPhonemes: inputText.
 	
-	self assert: phonemeOutput equals: 'KEY4NIHFEH'.
+	self assert: phonemeOutput equals: 'NIHFEH'.
 	
 	
 	
@@ -209,7 +209,7 @@ TextToPhonemeTest >> testMusic [
 	
 	phonemeOutput := Reciter textToPhonemes: inputText.
 	
-	self assert: phonemeOutput equals: 'MUSIC'.
+	self assert: phonemeOutput equals: 'MYUWZIHK'.
 	
 	
 	
@@ -307,7 +307,7 @@ TextToPhonemeTest >> testRhapsody [
 	
 	phonemeOutput := Reciter textToPhonemes: inputText.
 	
-	self assert: phonemeOutput equals: 'R/HEY5PSAADY'.
+	self assert: phonemeOutput equals: 'R/HEY5SOWDIH'.
 	
 	
 	
@@ -321,7 +321,7 @@ TextToPhonemeTest >> testScissors [
 	
 	phonemeOutput := Reciter textToPhonemes: inputText.
 	
-	self assert: phonemeOutput equals: 'SCISSAORS'.
+	self assert: phonemeOutput equals: 'SKIHSAORZ'.
 	
 	
 	
@@ -335,7 +335,7 @@ TextToPhonemeTest >> testSunflower [
 	
 	phonemeOutput := Reciter textToPhonemes: inputText.
 	
-	self assert: phonemeOutput equals: 'SUNFLOWER'.
+	self assert: phonemeOutput equals: 'SAH5NFLOWER'.
 	
 	
 	
@@ -349,7 +349,7 @@ TextToPhonemeTest >> testTransportation [
 	
 	phonemeOutput := Reciter textToPhonemes: inputText.
 	
-	self assert: phonemeOutput equals: 'TIY4RAENZPAORTAESHUN'.
+	self assert: phonemeOutput equals: 'TRAENZPAORTAESHUN'.
 	
 	
 	
@@ -377,7 +377,7 @@ TextToPhonemeTest >> testVirtue [
 	
 	phonemeOutput := Reciter textToPhonemes: inputText.
 	
-	self assert: phonemeOutput equals: 'VIY4ERTUWEH'.
+	self assert: phonemeOutput equals: 'VERTUWEH'.
 	
 	
 	

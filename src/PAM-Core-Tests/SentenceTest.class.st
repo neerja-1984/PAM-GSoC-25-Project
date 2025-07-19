@@ -12,9 +12,9 @@ SentenceTest >> testGoogleSummerOfCode [
 
 	| phonemeOutput inputText  |
 	
-	inputText := 'GoogleSummerOfCode'.
+	inputText := 'Google Summer Of Code'.
 	
 	phonemeOutput := Reciter textToPhonemes: inputText.
 	
-	self assert: phonemeOutput equals: 'GUW5GLEHSUMMEHRAHVCAADEH'.
+	self assert: phonemeOutput equals: 'GUW5JLEH  SAH5MER  AHV  KOWDEH'.
 ]
