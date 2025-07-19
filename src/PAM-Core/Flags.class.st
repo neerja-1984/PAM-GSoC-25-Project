@@ -11,7 +11,7 @@ Class {
 
 { #category : 'constants' }
 Flags class >> flagAlphaOrBackTick [
-    "Defines all 26 alphabets and back tick : A B C D E F G H I J K L M N O P Q R S T U V W X Y Z `"
+    "Defines all 26 alphabets and back tick : A B C D E F G H I J K L M N O P Q R S T U V W X Y Z '"
     ^ 128
 ]
 
@@ -88,7 +88,7 @@ Flags class >> mappingCharactersToFlag [
 			[ :digit | charFlags at: digit put: (1|2) ].
     
     "BackTick with flagAlphaOrBackTick ( value = 128 ) and flagRuleset2 ( value = 2 )"
-    charFlags at: $` put: (128 | 2).
+    charFlags at: $' put: (128 | 2).
     
     "A, E, I, O, U, Y with flagVowelOrY ( value = 64 ) and flagAlphaOrBackTick ( value = 128 )"
     #($A $E $I $O $U $Y) do: 
