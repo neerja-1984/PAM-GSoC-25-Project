@@ -27,7 +27,7 @@ TextToPhonemeTest >> testAnticipate [
 	
 	phonemeOutput := Reciter textToPhonemes: inputText.
 	
-	self assert: phonemeOutput equals: 'EY5NTICIPAETEH'.
+	self assert: phonemeOutput equals: 'EY5NTIHKIHPAETEH'.
 	
 	
 	
@@ -41,7 +41,7 @@ TextToPhonemeTest >> testBibliography [
 	
 	phonemeOutput := Reciter textToPhonemes: inputText.
 	
-	self assert: phonemeOutput equals: 'BIBLIAAGRAEP/HY'.
+	self assert: phonemeOutput equals: 'BIHBLIHOWJRAEFIH'.
 	
 	
 	
@@ -55,7 +55,7 @@ TextToPhonemeTest >> testCelsius [
 	
 	phonemeOutput := Reciter textToPhonemes: inputText.
 	
-	self assert: phonemeOutput equals: 'CEHLSIUS'.
+	self assert: phonemeOutput equals: 'SIY4EHLZIHYUWS'.
 	
 	
 	
@@ -69,7 +69,7 @@ TextToPhonemeTest >> testDictionary [
 	
 	phonemeOutput := Reciter textToPhonemes: inputText.
 	
-	self assert: phonemeOutput equals: 'DICTIUNEH4RY'.
+	self assert: phonemeOutput equals: 'DIY4IHSSHUNEH4RIH'.
 	
 	
 	
@@ -83,7 +83,7 @@ TextToPhonemeTest >> testDomenico [
 	
 	phonemeOutput := Reciter textToPhonemes: inputText.
 	
-	self assert: phonemeOutput equals: 'DOWMEHNICAA'.
+	self assert: phonemeOutput equals: 'DUWMEHNIHKOW'.
 	
 	
 	
@@ -97,7 +97,7 @@ TextToPhonemeTest >> testEngineering [
 	
 	phonemeOutput := Reciter textToPhonemes: inputText.
 	
-	self assert: phonemeOutput equals: 'EHNGINIY4RING'.
+	self assert: phonemeOutput equals: 'EHNXGIHNIY4RIHNX'.
 	
 	
 	
@@ -139,7 +139,7 @@ TextToPhonemeTest >> testHallucination [
 	
 	phonemeOutput := Reciter textToPhonemes: inputText.
 	
-	self assert: phonemeOutput equals: '/HAOLUCINAETIUN'.
+	self assert: phonemeOutput equals: '/HAOLUWKIHNAESHUN'.
 	
 	
 	
@@ -153,7 +153,7 @@ TextToPhonemeTest >> testInfluence [
 	
 	phonemeOutput := Reciter textToPhonemes: inputText.
 	
-	self assert: phonemeOutput equals: 'INFLUEHNCEH'.
+	self assert: phonemeOutput equals: 'IHNFLUWEHNKEH'.
 	
 	
 	
@@ -167,7 +167,7 @@ TextToPhonemeTest >> testJazz [
 	
 	phonemeOutput := Reciter textToPhonemes: inputText.
 	
-	self assert: phonemeOutput equals: 'JAEZZ'.
+	self assert: phonemeOutput equals: 'JEY4AEZZ'.
 	
 	
 	
@@ -181,7 +181,7 @@ TextToPhonemeTest >> testKnife [
 	
 	phonemeOutput := Reciter textToPhonemes: inputText.
 	
-	self assert: phonemeOutput equals: 'KNIFEH'.
+	self assert: phonemeOutput equals: 'KEY4NIHFEH'.
 	
 	
 	
@@ -195,7 +195,7 @@ TextToPhonemeTest >> testLeisure [
 	
 	phonemeOutput := Reciter textToPhonemes: inputText.
 	
-	self assert: phonemeOutput equals: 'LIY4SUREH'.
+	self assert: phonemeOutput equals: 'LIY4ZHEREH'.
 	
 	
 	
@@ -223,7 +223,7 @@ TextToPhonemeTest >> testNahuel [
 	
 	phonemeOutput := Reciter textToPhonemes: inputText.
 	
-	self assert: phonemeOutput equals: 'NAE/HUEHL'.
+	self assert: phonemeOutput equals: 'NAE/HYUWEHL'.
 	
 	
 	
@@ -251,7 +251,7 @@ TextToPhonemeTest >> testNotation [
 	
 	phonemeOutput := Reciter textToPhonemes: inputText.
 	
-	self assert: phonemeOutput equals: 'NAATAETIUN'.
+	self assert: phonemeOutput equals: 'NOWTAESHUN'.
 	
 	
 	
@@ -265,7 +265,7 @@ TextToPhonemeTest >> testOxygen [
 	
 	phonemeOutput := Reciter textToPhonemes: inputText.
 	
-	self assert: phonemeOutput equals: 'AAXYGEHN'.
+	self assert: phonemeOutput equals: 'OWKSIHGEHN'.
 	
 	
 	
@@ -279,7 +279,7 @@ TextToPhonemeTest >> testPhoneme [
 	
 	phonemeOutput := Reciter textToPhonemes: inputText.
 	
-	self assert: phonemeOutput equals: 'P/HAANEHMEH'.
+	self assert: phonemeOutput equals: 'FOWNEHMEH'.
 	
 	
 	
@@ -293,7 +293,7 @@ TextToPhonemeTest >> testQuestion [
 	
 	phonemeOutput := Reciter textToPhonemes: inputText.
 	
-	self assert: phonemeOutput equals: 'QUEHSTIUN'.
+	self assert: phonemeOutput equals: 'KWEHZCHUN'.
 	
 	
 	
@@ -349,7 +349,7 @@ TextToPhonemeTest >> testTransportation [
 	
 	phonemeOutput := Reciter textToPhonemes: inputText.
 	
-	self assert: phonemeOutput equals: 'TRAENSPAORTAETIUN'.
+	self assert: phonemeOutput equals: 'TIY4RAENZPAORTAESHUN'.
 	
 	
 	
@@ -363,7 +363,7 @@ TextToPhonemeTest >> testUniversal [
 	
 	phonemeOutput := Reciter textToPhonemes: inputText.
 	
-	self assert: phonemeOutput equals: 'UNIVERSAEL'.
+	self assert: phonemeOutput equals: 'YUWNIHVERZAEL'.
 	
 	
 	
@@ -377,7 +377,7 @@ TextToPhonemeTest >> testVirtue [
 	
 	phonemeOutput := Reciter textToPhonemes: inputText.
 	
-	self assert: phonemeOutput equals: 'VIRTUEH'.
+	self assert: phonemeOutput equals: 'VIY4ERTUWEH'.
 	
 	
 	
@@ -391,21 +391,21 @@ TextToPhonemeTest >> testWrong [
 	
 	phonemeOutput := Reciter textToPhonemes: inputText.
 	
-	self assert: phonemeOutput equals: 'WRAANG'.
+	self assert: phonemeOutput equals: 'ROWNX'.
 	
 	
 	
 ]
 
 { #category : 'tests' }
-TextToPhonemeTest >> testYawn [
+TextToPhonemeTest >> testYawning [
 
 	| phonemeOutput inputText  |
 	inputText := 'Yawning'.
 	
 	phonemeOutput := Reciter textToPhonemes: inputText.
 	
-	self assert: phonemeOutput equals: 'YAO5NING'.
+	self assert: phonemeOutput equals: 'YAO5NIHNX'.
 	
 	
 	
@@ -419,7 +419,7 @@ TextToPhonemeTest >> testZerox [
 	
 	phonemeOutput := Reciter textToPhonemes: inputText.
 	
-	self assert: phonemeOutput equals: 'ZEHRAAX'.
+	self assert: phonemeOutput equals: 'ZIY4EHROWKS'.
 	
 	
 	
@@ -433,7 +433,7 @@ TextToPhonemeTest >> testZigZag [
 	
 	phonemeOutput := Reciter textToPhonemes: inputText.
 	
-	self assert: phonemeOutput equals: 'ZIGZAEG'.
+	self assert: phonemeOutput equals: 'ZIY4IHJZAEG'.
 	
 	
 	
