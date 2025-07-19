@@ -9,11 +9,11 @@ Class {
 { #category : 'execution' }
 PAMDspExamples class >> playAllNumbersWithDelay [
 "pragma for the above method"
-	<script: 'PAMDsp new'>
+	<script: 'self playAllNumbersWithDelay'>
 	
-|player|	
-player := PAMDsp new.
-player initializeNumbersFolder.
-player playAllNumbersWithDelay.
+	|player|	
+	player := PAMDsp new.
+	player initializeNumbersFolder.
+	player playAllNumbersWithDelay.
  
 ]
