@@ -110,7 +110,9 @@ Reciter class >> checkSuffix: suffix in: text at: position [
 { #category : 'execution' }
 Reciter class >> textToPhonemes: input [
     "Convert input text to phonemes"
-    | text output pos charFlags rule currentChar |
+    | text output pos charFlags rule currentChar phonemeTokens |
+
+	 phonemeTokens := OrderedCollection new.
     text := ' ',input asUppercase. "Pad with space to justify start of a word"
     output := ''.
     pos := 2.
@@ -154,6 +156,7 @@ Reciter class >> textToPhonemes: input [
                 replacement := rule replacement.
                 skipCount := rule pattern size max: 1.
 
+					phonemeTokens add: replacement.
                 output := output , replacement.
                 pos := pos + skipCount.
 
@@ -167,7 +170,12 @@ Reciter class >> textToPhonemes: input [
     ].
 
     "Remove leading and trailing spaces"
-    output := output trimBoth.
+    output := output trimBoth. 
+	
+	 ReciterUtility log: '--------------- EOD Connversion for ', input , ' -----------------'.
 
-    ^ output
+	 "uncomment if you wanna return the phoentic string"
+    "^ output"
+	 "uncomment if you wanna return the phonemes as array"
+	 ^ phonemeTokens asArray. 
 ]
