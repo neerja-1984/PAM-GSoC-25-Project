@@ -10,6 +10,36 @@ Class {
 }
 
 { #category : 'initialization' }
+PhonemeToIPAConvertor class >> addRule: PAMPhoneme ipa: ipaSymbol [
+	IPAConversionDictionary at: PAMPhoneme asUppercase put: ipaSymbol.
+
+]
+
+{ #category : 'initialization' }
+PhonemeToIPAConvertor class >> convertPAMPhonemeToIPAFormat: PAMPhonemeString [
+	"Convert a list of PAM phonemes into IPA format"
+	
+	| ipaList stripped parts |
+	ipaList := OrderedCollection new.
+
+	PAMPhonemeString do: [ :eachPhoneme |
+		(self isAtomicPhoneme: eachPhoneme)
+			ifTrue: [
+				stripped := self stripStressMarkersInPhoneme: eachPhoneme.
+				ipaList add: (IPAConversionDictionary at: stripped)
+			]
+			ifFalse: [
+				parts := self splitCompoundPhoneme: eachPhoneme.
+				parts do: [ :p |
+					ipaList add: (IPAConversionDictionary at: p ifAbsent: [ '?' ]) ]
+			]
+	].
+
+	^ ipaList asArray
+
+]
+
+{ #category : 'initialization' }
 PhonemeToIPAConvertor class >> initializeDictionary [
     "Initialize with the 44 phonemes we are using"
    IPAConversionDictionary := Dictionary new.
@@ -57,6 +87,46 @@ PhonemeToIPAConvertor class >> initializeDictionary [
 	self addRule: 'R' ipa: 'r'.
 	self addRule: 'Y' ipa: 'j'.
 	self addRule: 'W' ipa: 'w'.
+]
+
+{ #category : 'initialization' }
+PhonemeToIPAConvertor class >> isAtomicPhoneme: PAMPhoneme [
+	"Check if stripped PAMphoneme is present in a dictionary ( ie. not a compound phoneme )"
+	| stripped |
+	stripped := self stripStressMarkersInPhoneme: PAMPhoneme.
+	^ IPAConversionDictionary includesKey: stripped
+
+]
+
+{ #category : 'initialization' }
+PhonemeToIPAConvertor class >> splitCompoundPhoneme: PAMPhoneme [
+	"Split compound phoneme into known phonemes using a greedy approach --> ie longest first"
+	| stripped size result pos found |
+	stripped := self stripStressMarkersInPhoneme: PAMPhoneme.
+	size := stripped size.
+	result := OrderedCollection new.
+	pos := 1.
+
+	[ pos <= size ] whileTrue: [
+		found := false.
+		(size to: pos by: -1) do: [ :end |
+			| slice |
+			slice := (stripped copyFrom: pos to: end).
+			(IPAConversionDictionary includesKey: slice) ifTrue: [
+				result add: slice.
+				pos := end + 1.
+				found := true.
+				^ result , (self splitCompoundPhoneme: (stripped copyFrom: pos to: size)) "recurse on the rest"
+			]
+		].
+		found ifFalse: [
+			result add: (stripped copyFrom: pos to: pos).
+			pos := pos + 1.
+		]
+	].
+
+	^ result
+
 ]
 
 { #category : 'initialization' }
