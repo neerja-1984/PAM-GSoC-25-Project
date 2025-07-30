@@ -7,6 +7,13 @@ Class {
 }
 
 { #category : 'tests' }
+PhonemeToIPATest >> testCompoundPhoneme [
+	| result |
+	result := PhonemeToIPAConvertor splitCompoundPhoneme: 'REY'.
+	self assert: result asArray equals: #('R' 'EY').
+]
+
+{ #category : 'tests' }
 PhonemeToIPATest >> testStripStressMarkersInPhoneme [
 
 	| result |
