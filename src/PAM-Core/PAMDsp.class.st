@@ -27,6 +27,13 @@ PAMDsp >> dsp: aDsp [
 ]
 
 { #category : 'initialization' }
+PAMDsp >> initializeAlphabetFolder [
+	"pre requisite --> have the numbers audion folder in image directory"
+	self initilizeWithLabel: 'Alphabet' folderName: 'alphabets'.
+
+]
+
+{ #category : 'initialization' }
 PAMDsp >> initializeNumbersFolder [
 	"pre requisite --> have the numbers audion folder in image directory"
 	self initilizeWithLabel: 'Number' folderName: 'numbers'.
@@ -50,6 +57,15 @@ PAMDsp >> initilizeWithLabel: aLabel folderName: aFolderName [
 	 "uncomment below if UI is to be made visible "
 	 "dsp displayUI."
     dsp start.
+]
+
+{ #category : 'execution' }
+PAMDsp >> playAllAlphabetsWithDelay [
+	"plays all numbers in a linear fashion asynchronusly"
+	[(0 to: 43) do: [ :eachPhoneme |
+			dsp setValue: eachPhoneme parameter: 'AlphabetIndex'.
+			dsp trig: 'AlphabetGate'.
+			(Delay forSeconds: 1) wait ] ] fork
 ]
 
 { #category : 'execution' }
