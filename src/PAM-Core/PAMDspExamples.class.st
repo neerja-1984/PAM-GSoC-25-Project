@@ -7,13 +7,12 @@ Class {
 }
 
 { #category : 'execution' }
-PAMDspExamples class >> playAllNumbersWithDelay [
+PAMDspExamples class >> sayNumbers0to9 [
 "pragma for the above method"
-	<script: 'self playAllNumbersWithDelay'>
+	<script: 'self sayNumbers0to9'>
 	
 	|player|	
 	player := PAMDsp new.
-	player initializeNumbersFolder.
-	player playAllNumbersWithDelay.
+	player sayNumbers0to9.
  
 ]
