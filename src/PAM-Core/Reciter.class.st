@@ -108,6 +108,12 @@ Reciter class >> checkSuffix: suffix in: text at: position [
 ]
 
 { #category : 'execution' }
+Reciter class >> textToIPAPhonemes: aString [
+	^ PhonemeToIPAConvertor convertPAMPhonemeToIPAFormat:
+		  (self textToPhonemes: aString)
+]
+
+{ #category : 'execution' }
 Reciter class >> textToPhonemes: input [
     "Convert input text to phonemes"
     | text output pos charFlags rule currentChar phonemeTokens |

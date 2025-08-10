@@ -12,6 +12,6 @@ PAMDspTest >> testStereoOutputNotNull [
 
     "Test that stereo output is not null"
     player := PAMDsp new.
-    player initializeNumbersFolder.
+    player sayNumbers0to9.
     self deny: player dsp isNull.
 ]
