@@ -67,7 +67,7 @@ PAMDsp >> sayNumbers: aCollection [
 ]
 
 { #category : 'execution' }
-PAMDsp >> sayPhoneme: text [
+PAMDsp >> sayText: text [
     | sortedIPAarray ipaText idx |
 
     "Plays the audio of the string we provide"
