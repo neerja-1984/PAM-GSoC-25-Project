@@ -107,6 +107,11 @@ PhonemeToIPAConvertor class >> initializeDictionary [
     "Special markers"
     self addRule: 'Q' ipa: 'ʔ'. 
     self addRule: '' ipa: ''.
+
+	 "Rules we come across by trial-error"
+	 self addRule: 'X' ipa: 'g'.
+	 self addRule: 'U' ipa: 'ʌ'.
+	self addRule: 'H' ipa: 'h'.
 ]
 
 { #category : 'initialization' }

@@ -50,7 +50,7 @@ TextToIPAPhonemeTest >> testDictionary [
 	
 	phonemeOutput := Reciter textToIPAPhonemes: inputText.
 	
-	self assert: phonemeOutput equals: #('d' 'i_colon' 'ɪ' 's' 'ʃ' '?' 'n' 'e' 'r' 'ɪ').
+	self assert: phonemeOutput equals: #('d' 'i_colon' 'ɪ' 's' 'ʃ' 'ʌ' 'n' 'e' 'r' 'ɪ').
 ]
 
 { #category : 'tests' }
@@ -72,7 +72,7 @@ TextToIPAPhonemeTest >> testEngineering [
 	
 	phonemeOutput := Reciter textToIPAPhonemes: inputText.
 	
-	self assert: phonemeOutput equals: #('e' 'n' '?' 'g' 'ɪ' 'n' 'i_colon' 'r' 'ɪ' 'n' '?').
+	self assert: phonemeOutput equals: #('e' 'n' 'g' 'g' 'ɪ' 'n' 'i_colon' 'r' 'ɪ' 'n' 'g').
 ]
 
 { #category : 'tests' }
@@ -106,7 +106,7 @@ TextToIPAPhonemeTest >> testHallucination [
 	
 	phonemeOutput := Reciter textToIPAPhonemes: inputText.
 	
-	self assert: phonemeOutput equals: #('?' 'ɔ_colon' 'l' '' 'u_colon' 'k' 'ɪ' 'n' 'æ' 'ʃ' '?' 'n').
+	self assert: phonemeOutput equals: #('h' 'ɔ_colon' 'l' '' 'u_colon' 'k' 'ɪ' 'n' 'æ' 'ʃ' 'ʌ' 'n').
 
 ]
 
@@ -174,7 +174,7 @@ TextToIPAPhonemeTest >> testNahuel [
 	
 	phonemeOutput := Reciter textToIPAPhonemes: inputText.
 	
-	self assert: phonemeOutput equals: #('n' 'æ' '?' 'j' 'u_colon' 'e' 'l').
+	self assert: phonemeOutput equals: #('n' 'æ' 'h' 'j' 'u_colon' 'e' 'l').
 ]
 
 { #category : 'tests' }
@@ -196,7 +196,7 @@ TextToIPAPhonemeTest >> testNotation [
 	
 	phonemeOutput := Reciter textToIPAPhonemes: inputText.
 	
-	self assert: phonemeOutput equals: #('n' 'əʊ' 't' 'æ' 'ʃ' '?' 'n')
+	self assert: phonemeOutput equals: #('n' 'əʊ' 't' 'æ' 'ʃ' 'ʌ' 'n')
 ]
 
 { #category : 'tests' }
@@ -229,8 +229,7 @@ TextToIPAPhonemeTest >> testQuestion [
 	
 	phonemeOutput := Reciter textToIPAPhonemes: inputText.
 	
-	self assert: phonemeOutput equals: #('k' 'w' 'e' 'z' 'ʈʃ' '?' 'n')
-
+	self assert: phonemeOutput equals: #('k' 'w' 'e' 'z' 'ʈʃ' 'ʌ' 'n')
 ]
 
 { #category : 'tests' }
@@ -241,7 +240,7 @@ TextToIPAPhonemeTest >> testRhapsody [
 	
 	phonemeOutput := Reciter textToIPAPhonemes: inputText.
 	
-	self assert: phonemeOutput equals: #('r' '?' 'eɪ' '' 's' 'əʊ' 'd' 'ɪ')
+	self assert: phonemeOutput equals: #('r' 'h' 'eɪ' '' 's' 'əʊ' 'd' 'ɪ')
 ]
 
 { #category : 'tests' }
@@ -274,7 +273,7 @@ TextToIPAPhonemeTest >> testTransportation [
 	
 	phonemeOutput := Reciter textToIPAPhonemes: inputText.
 	
-	self assert: phonemeOutput equals: #('t' 'r' 'æ' 'n' 'z' 'p' 'ɔ_colon' 'r' 't' 'æ' 'ʃ' '?' 'n').
+	self assert: phonemeOutput equals: #('t' 'r' 'æ' 'n' 'z' 'p' 'ɔ_colon' 'r' 't' 'æ' 'ʃ' 'ʌ' 'n').
 ]
 
 { #category : 'tests' }
@@ -306,7 +305,7 @@ TextToIPAPhonemeTest >> testWrong [
 	
 	phonemeOutput := Reciter textToIPAPhonemes: inputText.
 	
-	self assert: phonemeOutput equals: #('r' 'əʊ' 'n' '?').
+	self assert: phonemeOutput equals: #('r' 'əʊ' 'n' 'g').
 
 ]
 
@@ -318,7 +317,7 @@ TextToIPAPhonemeTest >> testYawning [
 	
 	phonemeOutput := Reciter textToIPAPhonemes: inputText.
 	
-	self assert: phonemeOutput equals: #('j' 'ɔ_colon' 'n' 'ɪ' 'n' '?')
+	self assert: phonemeOutput equals: #('j' 'ɔ_colon' 'n' 'ɪ' 'n' 'g')
 
 ]
 
