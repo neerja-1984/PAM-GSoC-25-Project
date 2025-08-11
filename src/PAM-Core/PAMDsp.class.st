@@ -65,3 +65,39 @@ PAMDsp >> sayNumbers: aCollection [
 	 self cleanUp.
     ] fork.
 ]
+
+{ #category : 'execution' }
+PAMDsp >> sayPhoneme: text [
+    | sortedIPAarray ipaText idx |
+
+    "Plays the audio of the string we provide"
+    self cleanUp.
+    self dsp: (PAMDspUtility phonemes). "Get a fresh DSP from utility"
+    sortedIPAarray := PAMDspUtility ipaOrder.
+
+    "Convert to IPA characters"
+    ipaText := Reciter textToIPAPhonemes: text.
+
+    [
+        PAMDspUtility log: '--------------- Starting phoneme playback for "', text, '" -----------------'.
+
+        ipaText do: [:token |
+            idx := sortedIPAarray indexOf: token ifAbsent: [ 0 ].
+				"PAMDspUtility log: 'Array Index for ', token printString, ' -->  ', idx printString."
+
+            idx > 0 ifTrue: [
+                dsp setValue: idx-1 parameter: 'PhonemeIndex'.
+                PAMDspUtility log: ('Playing phoneme ' , token , ' at index ' , idx printString).
+                dsp trig: 'PhonemeGate' for: 0.05.
+                (Delay forSeconds: 1) wait.
+            ] ifFalse: [
+                PAMDspUtility log: ('Skipping unknown phoneme token: "' , token , '"').
+            ].
+        ].
+
+        PAMDspUtility log: '--------------- EOD playback for "', text, '" -----------------'.
+        self cleanUp.
+    ] fork.
+
+
+]

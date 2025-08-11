@@ -49,20 +49,24 @@ PAMDspUtility class >> initilizeWithLabel: aLabel folderName: aFolderName [
 
 { #category : 'initialization' }
 PAMDspUtility class >> numbers [
+
 	^ self initilizeWithLabel: 'Number' folderName: 'numbers'
 ]
 
 { #category : 'initialization' }
 PAMDspUtility class >> phonemes [
-	^ self initilizeWithLabel: 'Phoneme' folderName: 'phoneme'.
+
+	^ self initilizeWithLabel: 'Phoneme' folderName: 'phoneme'
 ]
 
 { #category : 'execution' }
 PAMDspUtility class >> samplePlayer [
+
 	^ samplePlayer
 ]
 
 { #category : 'execution' }
-PAMDspUtility class >> samplePlayer: asamplePlayer [
-	samplePlayer:= asamplePlayer
+PAMDspUtility class >> samplePlayer: arg1 [
+
+	samplePlayer := arg1
 ]
