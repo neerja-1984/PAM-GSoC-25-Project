@@ -77,8 +77,8 @@ LetterTest >> testMatchesRule [
 	rules := AlphabetUtility rulesFor: $L.
 	match := ReciterUtility matches: (rules at: 1) in: 'LLO' at: 1.
 	
-"	self assert: match."
-	self deny: match.
+	self assert: match.
+	"self deny: match."
 
 ]
 

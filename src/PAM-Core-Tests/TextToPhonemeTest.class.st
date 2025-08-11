@@ -41,7 +41,7 @@ TextToPhonemeTest >> testBibliography [
 	
 	phonemeOutput := Reciter textToPhonemes: inputText.
 	
-	self assert: phonemeOutput equals: #('B' 'IH' 'B' 'L' 'IH' 'OW' 'J' 'R' 'AE' 'F' 'IH').
+	self assert: phonemeOutput equals: #('B' 'IH' 'B' 'L' 'IH' 'OW' 'G' 'R' 'AE' 'F' 'IH').
 	
 	
 	
@@ -111,7 +111,7 @@ TextToPhonemeTest >> testFluorescent [
 	
 	phonemeOutput := Reciter textToPhonemes: inputText.
 	
-	self assert: phonemeOutput equals: #('F' 'L' 'UW' 'AOR' 'EH' 'Z' 'K' 'EH' 'N' 'T').
+	self assert: phonemeOutput equals: #('F' 'L' 'UW' 'AOR' 'EH' 'S' 'K' 'EH' 'N' 'T').
 	
 	
 	
@@ -139,7 +139,7 @@ TextToPhonemeTest >> testHallucination [
 	
 	phonemeOutput := Reciter textToPhonemes: inputText.
 	
-	self assert: phonemeOutput equals: #('/H' 'AOL' '' 'UW' 'K' 'IH' 'N' 'AE' 'SH' 'UN').
+	self assert: phonemeOutput equals: #('/H' 'AOL' 'L' 'UW' 'K' 'IH' 'N' 'AE' 'SH' 'UN').
 	
 	
 	
@@ -181,7 +181,7 @@ TextToPhonemeTest >> testKnife [
 	
 	phonemeOutput := Reciter textToPhonemes: inputText.
 	
-	self assert: phonemeOutput equals: #('' 'N' 'IH' 'F' 'EH').
+	self assert: phonemeOutput equals: #('K' 'N' 'IH' 'F' 'EH').
 	
 	
 	
@@ -209,7 +209,7 @@ TextToPhonemeTest >> testMusic [
 	
 	phonemeOutput := Reciter textToPhonemes: inputText.
 	
-	self assert: phonemeOutput equals: #('M' 'YUW' 'Z' 'IH' 'K').
+	self assert: phonemeOutput equals: #('M' 'YUW' 'S' 'IH' 'K').
 	
 	
 	
@@ -293,7 +293,7 @@ TextToPhonemeTest >> testQuestion [
 	
 	phonemeOutput := Reciter textToPhonemes: inputText.
 	
-	self assert: phonemeOutput equals: #('KW' 'EH' 'Z' 'CH' 'UN').
+	self assert: phonemeOutput equals: #('KW' 'EH' 'S' 'CH' 'UN').
 	
 	
 	
@@ -307,7 +307,7 @@ TextToPhonemeTest >> testRhapsody [
 	
 	phonemeOutput := Reciter textToPhonemes: inputText.
 	
-	self assert: phonemeOutput equals: #('R' '/H' 'EY5' '' 'S' 'OW' 'D' 'IH').
+	self assert: phonemeOutput equals: #('R' '/H' 'EY5' 'P' 'S' 'OW' 'D' 'IH').
 	
 	
 	
@@ -321,7 +321,7 @@ TextToPhonemeTest >> testScissors [
 	
 	phonemeOutput := Reciter textToPhonemes: inputText.
 	
-	self assert: phonemeOutput equals:#('S' 'K' 'IH' '' 'S' 'AOR' 'Z').
+	self assert: phonemeOutput equals:#('S' 'K' 'IH' 'S' 'S' 'AOR' 'S').
 	
 	
 	
@@ -349,7 +349,7 @@ TextToPhonemeTest >> testTransportation [
 	
 	phonemeOutput := Reciter textToPhonemes: inputText.
 	
-	self assert: phonemeOutput equals: #('T' 'R' 'AE' 'N' 'Z' 'P' 'AOR' 'T' 'AE' 'SH' 'UN').
+	self assert: phonemeOutput equals: #('T' 'R' 'AE' 'N' 'S' 'P' 'AOR' 'T' 'AE' 'SH' 'UN').
 	
 	
 	
@@ -363,7 +363,7 @@ TextToPhonemeTest >> testUniversal [
 	
 	phonemeOutput := Reciter textToPhonemes: inputText.
 	
-	self assert: phonemeOutput equals: #('YUWN' 'IH' 'V' 'ER' 'Z' 'AE' 'L').
+	self assert: phonemeOutput equals: #('YUWN' 'IH' 'V' 'ER' 'S' 'AE' 'L').
 	
 	
 	
@@ -433,7 +433,7 @@ TextToPhonemeTest >> testZigZag [
 	
 	phonemeOutput := Reciter textToPhonemes: inputText.
 	
-	self assert: phonemeOutput equals: #('ZIY4' 'IH' 'J' 'Z' 'AE' 'G').
+	self assert: phonemeOutput equals: #('ZIY4' 'IH' 'G' 'Z' 'AE' 'G').
 	
 	
 	
