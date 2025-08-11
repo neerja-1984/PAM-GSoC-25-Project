@@ -16,5 +16,5 @@ SentenceTest >> testGoogleSummerOfCode [
 	
 	phonemeOutput := Reciter textToPhonemes: inputText.
 	
-	self assert: phonemeOutput equals: 'GUW5GLEH  SAH5MMER  AHV  KOWDEH'.
+	self assert: phonemeOutput equals: #('G' 'UW5' 'J' 'L' 'EH' 'S' 'AH5' 'M' '' 'ER' 'AHV' 'K' 'OW' 'D' 'EH').
 ]
