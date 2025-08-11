@@ -47,6 +47,15 @@ PAMDspUtility class >> initilizeWithLabel: aLabel folderName: aFolderName [
 	 ^ dspInstance.
 ]
 
+{ #category : 'execution' }
+PAMDspUtility class >> ipaOrder [
+
+	^ #( 'a_colon' 'aɪ' 'aʊ' 'b' 'd' 'dʒ' 'e' 'eə' 'eɪ' 'f' 'g' 'h' 'i'
+	     'i_colon' 'j' 'k' 'l' 'm' 'n' 'p' 'r' 's' 't' 'u_colon'
+	     'v' 'w' 'z' 'æ' 'ð' 'ŋ' 'ɒ' 'ɔ_colon' 'ɔɪ' 'ə' 'əʊ' 'ɜ_colon'
+	     'ɪə' 'ʃ' 'ʈʃ' 'ʊ' 'ʊə' 'ʌ' 'ʒ' 'θ' )
+]
+
 { #category : 'initialization' }
 PAMDspUtility class >> numbers [
 
