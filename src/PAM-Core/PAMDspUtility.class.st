@@ -54,6 +54,27 @@ PAMDspUtility class >> ipaOrder [
 	     'ɪə' 'ʃ' 'ʈʃ' 'ʊ' 'ʊə' 'ʌ' 'ʒ' 'θ' )
 ]
 
+{ #category : 'execution' }
+PAMDspUtility class >> log: message [
+
+    | senderContext className methodName |
+    
+    "Get the sender context (the method that called log:)"
+    senderContext := thisContext sender.
+    className := senderContext method methodClass name.
+    methodName := senderContext selector.
+    
+    Transcript
+        nextPutAll: '[';
+        nextPutAll: className;
+        nextPutAll: ' >> #';
+        nextPutAll: methodName asString;
+        nextPutAll: '] ';
+        nextPutAll: message;
+        cr.
+    Transcript flush
+]
+
 { #category : 'initialization' }
 PAMDspUtility class >> numbers [
 
@@ -63,7 +84,7 @@ PAMDspUtility class >> numbers [
 { #category : 'initialization' }
 PAMDspUtility class >> phonemes [
 
-	^ self initilizeWithLabel: 'Phoneme' folderName: 'phoneme'
+	^ self initializeWithLabel: 'Phoneme' folderName: 'phoneme'
 ]
 
 { #category : 'execution' }
