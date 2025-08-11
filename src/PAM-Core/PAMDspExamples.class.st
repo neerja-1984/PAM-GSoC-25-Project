@@ -15,4 +15,21 @@ PAMDspExamples class >> sayNumbers0to9 [
 	player := PAMDsp new.
 	player sayNumbers0to9.
  
+	"see for logs :)"
+	Transcript open.
+]
+
+{ #category : 'execution' }
+PAMDspExamples class >> sayText [
+"pragma for the above method"
+	<script: 'self sayText'>
+	
+	|player text|	
+	text := 'DOG'.	
+	player := PAMDsp new.
+	player sayText: text.
+	
+	"See for logs :)"
+	Transcript open.
+ 
 ]
