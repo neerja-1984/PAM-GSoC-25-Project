@@ -26,25 +26,23 @@ PAMDspUtility class >> dspInstance: adspInstance [
 ]
 
 { #category : 'initialization' }
-PAMDspUtility class >> initilizeWithLabel: aLabel folderName: aFolderName [ 
+PAMDspUtility class >> initializeWithLabel: aLabel folderName: aFolderName [
 
-	"a generalised method to set label and folder Name in any OS environment !"
-    | path pathSeparator|
-	 pathSeparator:= '/'.
-	 OSPlatform current isWindows ifTrue: [ pathSeparator:= '\'].
-    path := FileLocator imageDirectory asAbsolute pathString , pathSeparator , aFolderName.
-    
-    samplePlayer := TpSampler new 
-        label: aLabel; 
-        pathToFolder: path.
+	| folderPath sampler |
+	
+	"genelized way to configure path which works wrt to any OS"
+	folderPath := FileLocator documents / aFolderName.
+	
+	sampler := TpSampler new.
+	sampler label: aLabel.
+	
+	samplePlayer := sampler pathToFolder: folderPath.
+	dspInstance := samplePlayer stereo asDsp.
+	dspInstance
+		init;
+		start.
+	^ dspInstance
 
-    dspInstance := samplePlayer stereo asDsp.
-    dspInstance init.
-	 "uncomment below if UI is to be made visible "
-	 "dspInstance displayUI."
-    dspInstance start.
-
-	 ^ dspInstance.
 ]
 
 { #category : 'execution' }
