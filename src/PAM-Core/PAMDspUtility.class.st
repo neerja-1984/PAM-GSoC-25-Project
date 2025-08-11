@@ -17,7 +17,7 @@ Class {
 { #category : 'execution' }
 PAMDspUtility class >> dspInstance [
 
-	^ dspInstance.
+	^ dspInstance
 ]
 
 { #category : 'execution' }
@@ -78,7 +78,7 @@ PAMDspUtility class >> log: message [
 { #category : 'initialization' }
 PAMDspUtility class >> numbers [
 
-	^ self initilizeWithLabel: 'Number' folderName: 'numbers'
+	^ self initializeWithLabel: 'Number' folderName: 'numbers'
 ]
 
 { #category : 'initialization' }
