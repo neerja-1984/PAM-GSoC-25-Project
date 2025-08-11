@@ -14,7 +14,8 @@ PAMDsp >> cleanUp [
     dsp ifNotNil: [
         dsp stop.
         dsp destroy.
-        dsp := nil
+        dsp := nil.
+		PAMDspUtility log: 'DSP destroyed succesfully !'
     ].
 ]
 
@@ -29,27 +30,19 @@ PAMDsp >> dsp: aDsp [
 ]
 
 { #category : 'execution' }
-PAMDsp >> playAllAlphabetsWithDelay [
-	"plays all numbers in a linear fashion asynchronusly"
-	[(0 to: 43) do: [ :eachPhoneme |
-			Transcript show: 'Index: ', eachPhoneme printString; cr.
-			dsp setValue: eachPhoneme parameter: 'AlphabetIndex'.
-			dsp trig: 'AlphabetGate'.
-			(Delay forSeconds: 1) wait ] ] fork
-]
-
-{ #category : 'execution' }
 PAMDsp >> sayNumbers0to9 [ 
     "Plays all numbers sequentially with 1 second delay"
 	 self cleanUp.
-    self dsp: PAMDspUtility numbers. "Get a fresh DSP from utility"
+    self dsp: (PAMDspUtility numbers). "Get a fresh DSP from utility"
 
     [
+		PAMDspUtility log: '------ Starting phoneme playback for numbers0to9 -------------'.
         0 to: 9 do: [ :i |
             dsp setValue: i parameter: 'NumberIndex'.
             dsp trig: 'NumberGate'.
             (Delay forSeconds: 1) wait.
         ].
+	 PAMDspUtility log: '--------------- EOD playback for numbers0to9  -----------------'.
 	 self cleanUp.
     ] fork.
 ]
@@ -61,11 +54,14 @@ PAMDsp >> sayNumbers: aCollection [
     self dsp: (PAMDspUtility numbers). "Get a fresh DSP from utility"
 
     [
+		PAMDspUtility log: '------ Starting phoneme playback for ' , aCollection printString , ' -------------'.
         aCollection do: [ :i |
             dsp setValue: i parameter: 'NumberIndex'.
+				PAMDspUtility log: ('Playing phoneme ' , i printString).
             dsp trig: 'NumberGate'.
             (Delay forSeconds: 1) wait.
         ].
+	 PAMDspUtility log: '--------------- EOD playback for ', aCollection printString , ' -----------------'.
 	 self cleanUp.
     ] fork.
 ]
