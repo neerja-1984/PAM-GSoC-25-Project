@@ -10,6 +10,12 @@ Class {
 }
 
 { #category : 'tests' }
+TextToIPAPhonemeTest >> setUp [
+	super setUp.
+	PhonemeToIPAConvertor initializeDictionary.
+]
+
+{ #category : 'tests' }
 TextToIPAPhonemeTest >> testAnticipate [
 
 	| phonemeOutput inputText  |
@@ -28,7 +34,7 @@ TextToIPAPhonemeTest >> testBibliography [
 	
 	phonemeOutput := Reciter textToIPAPhonemes: inputText.
 	
-	self assert: phonemeOutput equals: #('b' 'ɪ' 'b' 'l' 'ɪ' 'əʊ' 'dʒ' 'r' 'æ' 'f' 'ɪ').
+	self assert: phonemeOutput equals: #('b' 'ɪ' 'b' 'l' 'ɪ' 'əʊ' 'g' 'r' 'æ' 'f' 'ɪ').
 ]
 
 { #category : 'tests' }
@@ -83,7 +89,7 @@ TextToIPAPhonemeTest >> testFluorescent [
 	
 	phonemeOutput := Reciter textToIPAPhonemes: inputText.
 	
-	self assert: phonemeOutput equals: #('f' 'l' 'u_colon' 'ɔ_colon' 'r' 'e' 'z' 'k' 'e' 'n' 't').
+	self assert: phonemeOutput equals: #('f' 'l' 'u_colon' 'ɔ_colon' 'r' 'e' 's' 'k' 'e' 'n' 't').
 
 ]
 
