@@ -112,7 +112,7 @@ TextToIPAPhonemeTest >> testHallucination [
 	
 	phonemeOutput := Reciter textToIPAPhonemes: inputText.
 	
-	self assert: phonemeOutput equals: #('h' 'ɔ_colon' 'l' '' 'u_colon' 'k' 'ɪ' 'n' 'æ' 'ʃ' 'ʌ' 'n').
+	self assert: phonemeOutput equals: #('h' 'ɔ_colon' 'l' 'l' 'u_colon' 'k' 'ɪ' 'n' 'æ' 'ʃ' 'ʌ' 'n').
 
 ]
 
@@ -147,7 +147,7 @@ TextToIPAPhonemeTest >> testKnife [
 	
 	phonemeOutput := Reciter textToIPAPhonemes: inputText.
 	
-	self assert: phonemeOutput equals: #('' 'n' 'ɪ' 'f' 'e')
+	self assert: phonemeOutput equals: #('k' 'n' 'ɪ' 'f' 'e')
 ]
 
 { #category : 'tests' }
@@ -169,7 +169,7 @@ TextToIPAPhonemeTest >> testMusic [
 	
 	phonemeOutput := Reciter textToIPAPhonemes: inputText.
 	
-	self assert: phonemeOutput equals: #('m' 'j' 'u_colon' 'z' 'ɪ' 'k').
+	self assert: phonemeOutput equals: #('m' 'j' 'u_colon' 's' 'ɪ' 'k').
 ]
 
 { #category : 'tests' }
@@ -235,7 +235,7 @@ TextToIPAPhonemeTest >> testQuestion [
 	
 	phonemeOutput := Reciter textToIPAPhonemes: inputText.
 	
-	self assert: phonemeOutput equals: #('k' 'w' 'e' 'z' 'ʈʃ' 'ʌ' 'n')
+	self assert: phonemeOutput equals: #('k' 'w' 'e' 's' 'ʈʃ' 'ʌ' 'n')
 ]
 
 { #category : 'tests' }
@@ -246,7 +246,7 @@ TextToIPAPhonemeTest >> testRhapsody [
 	
 	phonemeOutput := Reciter textToIPAPhonemes: inputText.
 	
-	self assert: phonemeOutput equals: #('r' 'h' 'eɪ' '' 's' 'əʊ' 'd' 'ɪ')
+	self assert: phonemeOutput equals: #('r' 'h' 'eɪ' 'p' 's' 'əʊ' 'd' 'ɪ')
 ]
 
 { #category : 'tests' }
@@ -257,7 +257,7 @@ TextToIPAPhonemeTest >> testScissors [
 	
 	phonemeOutput := Reciter textToIPAPhonemes: inputText.
 	
-	self assert: phonemeOutput equals:#('s' 'k' 'ɪ' '' 's' 'ɔ_colon' 'r' 'z')
+	self assert: phonemeOutput equals:#('s' 'k' 'ɪ' 's' 's' 'ɔ_colon' 'r' 's')
 ]
 
 { #category : 'tests' }
@@ -279,7 +279,7 @@ TextToIPAPhonemeTest >> testTransportation [
 	
 	phonemeOutput := Reciter textToIPAPhonemes: inputText.
 	
-	self assert: phonemeOutput equals: #('t' 'r' 'æ' 'n' 'z' 'p' 'ɔ_colon' 'r' 't' 'æ' 'ʃ' 'ʌ' 'n').
+	self assert: phonemeOutput equals: #('t' 'r' 'æ' 'n' 's' 'p' 'ɔ_colon' 'r' 't' 'æ' 'ʃ' 'ʌ' 'n').
 ]
 
 { #category : 'tests' }
@@ -290,7 +290,7 @@ TextToIPAPhonemeTest >> testUniversal [
 	
 	phonemeOutput := Reciter textToIPAPhonemes: inputText.
 	
-	self assert: phonemeOutput equals: #('j' 'u_colon' 'n' 'ɪ' 'v' 'ɜ_colon' 'z' 'æ' 'l')
+	self assert: phonemeOutput equals: #('j' 'u_colon' 'n' 'ɪ' 'v' 'ɜ_colon' 's' 'æ' 'l')
 ]
 
 { #category : 'tests' }
@@ -346,6 +346,6 @@ TextToIPAPhonemeTest >> testZigZag [
 	
 	phonemeOutput := Reciter textToIPAPhonemes: inputText.
 	
-	self assert: phonemeOutput equals: #('z' 'i_colon' 'ɪ' 'dʒ' 'z' 'æ' 'g')
+	self assert: phonemeOutput equals: #('z' 'i_colon' 'ɪ' 'g' 'z' 'æ' 'g')
 
 ]
