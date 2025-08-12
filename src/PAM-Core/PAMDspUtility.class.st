@@ -41,6 +41,7 @@ PAMDspUtility class >> initializeWithLabel: aLabel folderName: aFolderName [
 	dspInstance
 		init;
 		start.
+		"displayUI"
 	^ dspInstance
 
 ]
