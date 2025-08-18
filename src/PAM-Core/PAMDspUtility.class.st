@@ -91,6 +91,14 @@ PAMDspUtility class >> log: message [
     Transcript flush
 ]
 
+{ #category : 'initialization' }
+PAMDspUtility class >> notePresetForChild: isChild [
+	"Return preset note value depending on child/adult flag"
+	^ isChild
+		ifTrue: [ self childPreset ]
+		ifFalse: [ self adultPreset ].
+]
+
 { #category : 'directories' }
 PAMDspUtility class >> numbers [
 
