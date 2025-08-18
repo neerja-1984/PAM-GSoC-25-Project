@@ -19,12 +19,12 @@ PAMDsp >> cleanUp [
     ].
 ]
 
-{ #category : 'execution' }
+{ #category : 'instance variables' }
 PAMDsp >> dsp [ 
 	^ dsp.
 ]
 
-{ #category : 'execution' }
+{ #category : 'instance variables' }
 PAMDsp >> dsp: aDsp [
 	dsp:= aDsp.
 ]
