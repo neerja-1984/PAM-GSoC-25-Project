@@ -17,6 +17,18 @@ Class {
 }
 
 { #category : 'initialization' }
+PAMDspUtility class >> adultPreset [
+	"returns the Note value of DSP --> which makes the DSP sound like a adult"
+	^ 275.
+]
+
+{ #category : 'initialization' }
+PAMDspUtility class >> childPreset [
+	"returns the Note value of DSP --> which makes the DSP sound like a child"
+	^ 500
+]
+
+{ #category : 'initialization' }
 PAMDspUtility class >> dspInstance [
 
 	^ dspInstance
