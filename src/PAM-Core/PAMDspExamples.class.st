@@ -33,3 +33,18 @@ PAMDspExamples class >> sayText [
 	Transcript open.
  
 ]
+
+{ #category : 'execution' }
+PAMDspExamples class >> sayTextWithProsody [
+"pragma for the above method"
+	<script: 'self sayTextWithProsody'>
+	
+	|player text|	
+	text := 'DOG'.	
+	player := PAMDsp new.
+	player sayTextWithProsody: text.
+	
+	"See for logs :)"
+	Transcript open.
+ 
+]
