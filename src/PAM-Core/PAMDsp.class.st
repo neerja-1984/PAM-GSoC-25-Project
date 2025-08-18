@@ -141,6 +141,7 @@ PAMDsp >> sayTextWithProsody: text asChild: isChild [
                     ' (stress=', stress printString,
                     ', amp=', amplitude printString,
                     ', dur=', duration printString,
+						 ', note=', note printString,
                     ') at index ', idx printString).
 
                 dsp trig: 'PhonemeGate' for: duration.
