@@ -93,10 +93,13 @@ PAMDspUtility class >> log: message [
 
 { #category : 'initialization' }
 PAMDspUtility class >> notePresetForChild: isChild [
-	"Return preset note value depending on child/adult flag"
-	^ isChild
-		ifTrue: [ self childPreset ]
-		ifFalse: [ self adultPreset ].
+    "Return preset note value depending on child/adult flag and log the choice"
+    | note |
+    note := isChild ifTrue: [self childPreset] ifFalse: [self adultPreset].
+    self log: 'Preset selected: ', 
+        (isChild ifTrue: ['Child'] ifFalse: ['Adult']), 
+        ' (note=', note printString, ')'.
+    ^note.
 ]
 
 { #category : 'directories' }
