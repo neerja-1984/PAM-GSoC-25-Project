@@ -7,22 +7,25 @@ Class {
 	],
 	#classInstVars : [
 		'samplePlayer',
-		'dspInstance'
+		'dspInstance',
+		'childPreset',
+		'adultPreset'
 	],
 	#category : 'PAM-Core-Instrument',
 	#package : 'PAM-Core',
 	#tag : 'Instrument'
 }
 
-{ #category : 'execution' }
+{ #category : 'initialization' }
 PAMDspUtility class >> dspInstance [
 
 	^ dspInstance
 ]
 
-{ #category : 'execution' }
-PAMDspUtility class >> dspInstance: adspInstance [
-	dspInstance:= adspInstance.
+{ #category : 'initialization' }
+PAMDspUtility class >> dspInstance: arg1 [
+
+	dspInstance := arg1
 ]
 
 { #category : 'initialization' }
@@ -46,7 +49,7 @@ PAMDspUtility class >> initializeWithLabel: aLabel folderName: aFolderName [
 
 ]
 
-{ #category : 'execution' }
+{ #category : 'accessing - array' }
 PAMDspUtility class >> ipaOrder [
 
 	^ #( 'a_colon' 'aɪ' 'aʊ' 'b' 'd' 'dʒ' 'e' 'eə' 'eɪ' 'f' 'g' 'h' 'i'
@@ -76,25 +79,25 @@ PAMDspUtility class >> log: message [
     Transcript flush
 ]
 
-{ #category : 'initialization' }
+{ #category : 'directories' }
 PAMDspUtility class >> numbers [
 
 	^ self initializeWithLabel: 'Number' folderName: 'numbers'
 ]
 
-{ #category : 'initialization' }
+{ #category : 'directories' }
 PAMDspUtility class >> phonemes [
 
 	^ self initializeWithLabel: 'Phoneme' folderName: 'phoneme'
 ]
 
-{ #category : 'execution' }
+{ #category : 'initialization' }
 PAMDspUtility class >> samplePlayer [
 
 	^ samplePlayer
 ]
 
-{ #category : 'execution' }
+{ #category : 'initialization' }
 PAMDspUtility class >> samplePlayer: arg1 [
 
 	samplePlayer := arg1
