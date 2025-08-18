@@ -101,3 +101,56 @@ PAMDsp >> sayText: text [
 
 
 ]
+
+{ #category : 'execution' }
+PAMDsp >> sayTextWithProsody: text asChild: isChild [
+    | sortedIPAarray ipaText stressTokens ipaAndStress idx phoneme stress amplitude duration note|
+
+    self cleanUp.
+    self dsp: (PAMDspUtility phonemes).
+
+	 "get note value based on flag"
+	 note := PAMDspUtility notePresetForChild: isChild.
+	 dsp setValue: note parameter: 'PhonemeNote'.	
+		
+    sortedIPAarray := PAMDspUtility ipaOrder.
+
+    ipaText := Reciter textToIPAPhonemes: text.
+    stressTokens := Reciter textToPhonemes: text.
+
+    "give a collection of pair's of {ipaPhoneme . SAM-Phonem}"
+    ipaAndStress := Parser pairIPAPhoneme: ipaText withStress: stressTokens.
+
+    [
+        PAMDspUtility log: '--------------- Starting phoneme playback for "', text, '" -----------------'.
+
+        ipaAndStress do: [:pair |
+            phoneme := pair first.
+            stress  := pair second.
+
+            amplitude := Parser amplitudeForStress: stress.
+            duration  := Parser durationForStress: stress.
+
+            idx := sortedIPAarray indexOf: phoneme ifAbsent: [ 0 ].
+
+            idx > 0 ifTrue: [
+                dsp setValue: idx - 1 parameter: 'PhonemeIndex'.
+                dsp setValue: amplitude parameter: 'PhonemeULevel'.
+
+                PAMDspUtility log: ('Playing phoneme ', phoneme,
+                    ' (stress=', stress printString,
+                    ', amp=', amplitude printString,
+                    ', dur=', duration printString,
+                    ') at index ', idx printString).
+
+                dsp trig: 'PhonemeGate' for: duration.
+                (Delay forSeconds: 0.2) wait.
+            ] ifFalse: [
+                PAMDspUtility log: ('Skipping unknown phoneme token: "', phoneme, '"').
+            ].
+        ].
+
+        PAMDspUtility log: '--------------- EOD playback for "', text, '" -----------------'.
+        self cleanUp.
+    ] fork.
+]
