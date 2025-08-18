@@ -6,7 +6,7 @@ Class {
 	#tag : 'Parser'
 }
 
-{ #category : 'as yet unclassified' }
+{ #category : 'helper methods' }
 Parser class >> amplitudeForStress: stress [
     "Map stress in range [4..6] with amplitude in range [0.5..1.0].
 
@@ -15,7 +15,7 @@ Parser class >> amplitudeForStress: stress [
     ^ 0.5 + (((stress - 4) / 2.0) * 0.5)
 ]
 
-{ #category : 'as yet unclassified' }
+{ #category : 'helper methods' }
 Parser class >> durationForStress: stress [
     "Map stress in range [4..6] with duration in range [0.1..0.4].
 
@@ -24,7 +24,7 @@ Parser class >> durationForStress: stress [
     ^ 0.1 + (((stress - 4) / 2.0) * 0.3)
 ]
 
-{ #category : 'as yet unclassified' }
+{ #category : 'mapping' }
 Parser class >> pairIPAPhoneme: ipaText withStress: stressTokens [
 	"Pair each IPA phoneme with its numeric stress value.
 	
@@ -58,6 +58,8 @@ Parser class >> pairIPAPhoneme: ipaText withStress: stressTokens [
 					          ifTrue: [ stressToken last digitValue ]
 					          ifFalse: [ default ] ].
 
+		PAMDspUtility log: ('[pairIPAPhoneme] phoneme="{1}"  stress={2}' format: { phoneme. stress }).
+			
 		result add: { phoneme. stress } ].
 
 	^ result asArray
