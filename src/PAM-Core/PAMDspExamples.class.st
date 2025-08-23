@@ -35,24 +35,9 @@ PAMDspExamples class >> sayText [
 ]
 
 { #category : 'execution' }
-PAMDspExamples class >> sayTextWithProsody [
-"pragma for the above method"
-	<script: 'self sayTextWithProsody'>
-	
-	|player text|	
-	text := 'DOG'.	
-	player := PAMDsp new.
-	player sayTextWithProsody: text.
-	
-	"See for logs :)"
-	Transcript open.
- 
-]
-
-{ #category : 'execution' }
 PAMDspExamples class >> sayTextWithProsody: string asChild: bool [
 "pragma for the above method"
-	<script: 'self sayTextWithProsody:asChild:'>
+	<script: 'self sayTextWithProsody: ''dog'' asChild: false'>
 	
 	|player text|	
 	text := 'DOG'.	
