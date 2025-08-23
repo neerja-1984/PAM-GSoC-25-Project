@@ -29,6 +29,6 @@ BaselineOfPAM >> coypuIDE: spec [
 		baseline: 'CoypuIDE'
 		with: [
 			spec  
-				repository: 'github://lucretiomsp/CoypuIDE'
+				repository: 'github://pharo-graphics/CoypuIDE/'
 		]
 ]
