@@ -1,3 +1,43 @@
+"
+## Overview
+`Parser` provides helpers for adding **prosody** (stress, loudness, duration) to phoneme sequences.  
+It translates numeric stress tokens into amplitude/duration values, and pairs IPA phonemes with stress levels.
+
+---
+
+## Usage
+
+### Amplitude for stress
+Stress => [4..6] → amplitude => [0.5..1.0].
+
+```language=Pharo
+Parser amplitudeForStress: 4.   ""0.5 (soft)""
+Parser amplitudeForStress: 5.   ""0.75""
+Parser amplitudeForStress: 6.   ""1.0 (strong)""
+```
+
+### Duration for stress
+```language=Pharo
+""Stress => [4..6] → duration => [0.1..0.4] seconds.""
+Parser durationForStress: 4.   ""0.1 (short/fast)""
+Parser durationForStress: 5.   ""0.25""
+Parser durationForStress: 6.   ""0.4 (long/slow)""
+```
+
+### Pair IPA phonemes with stress
+```language=Pharo
+""Matches phonemes with corresponding stress tokens.
+Pads missing stress values with default (=5).""
+
+""paste below in playground to understand""
+| ipa stress pairs |
+ipa := #('n' 'i_colon' 'r' 'dʒ' 'æ').
+stress := #('N' 'IY4' 'R' 'J' 'AE').
+pairs := Parser pairIPAPhoneme: ipa withStress: stress.
+
+""returns => #(#('n' 5) #('i_colon' 4) #('r' 5) #('dʒ' 5) #('æ' 5))""
+```
+"
 Class {
 	#name : 'Parser',
 	#superclass : 'Object',
