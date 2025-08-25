@@ -1,3 +1,52 @@
+"
+## Overview
+- Holds a dictionary mapping PAM phoneme strings → IPA symbols.
+- Provides utilities to:
+- Strip stress markers like 1, 2, '.
+- Distinguish atomic vs compound phonemes.
+- Break down compounds recursively (longest-match first).
+- Log each mapping for debugging/tracing.
+
+--- 
+
+## Usage
+
+### Dictionary initialization
+```language=Pharo
+""All mappings are centralized in initializeDictionary.""
+PhonemeToIPAConvertor initializeDictionary.
+""Example: PAM 'IY' -> IPA 'iː'""
+```
+
+### Conversion
+```language=Pharo
+""main engine that converts from Rules Phoneme [ defined in LetterRules to ipa-phoneme]
+paste the below in playground to see.""
+ipaSymbols := PhonemeToIPAConvertor 
+    convertPAMPhonemeToIPAFormat: #(''DH'' ''AH'' ''K'' ''AE'' ''T'').
+
+""returns #(''ð'' ''ʌ'' ''k'' ''æ'' ''t'')""
+```
+
+### Recursion: Greedy compound splitting
+```language=Pharo
+""The splitCompoundPhoneme: method is the star here. It tries the longest matching slice first, then recurses on the rest""
+
+self splitCompoundPhoneme: 'CHJH'
+""→ try ''CHJH'' (not found)""
+""→ try ''CH'' (found!)""
+   ""recurse on ''JH''""
+""→ ''CH'', ''JH''""
+```
+
+### Dictionary initialization
+```language=Pharo
+""All mappings are centralized in initializeDictionary.""
+PhonemeToIPAConvertor initializeDictionary.
+""Example: PAM 'IY' -> IPA 'iː'""
+```
+
+"
 Class {
 	#name : 'PhonemeToIPAConvertor',
 	#superclass : 'Object',
