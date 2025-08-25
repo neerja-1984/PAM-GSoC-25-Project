@@ -1,3 +1,14 @@
+"
+```language=Pharo
+""Baseline script to load""
+Metacello new
+	baseline: 'PAM';
+  repository: 'github://neerja-1984/PAM-GSoC-25-Project:master/src';
+  onConflict: [ :ex | ex useIncoming ];
+ 	onUpgrade: [ :ex | ex useIncoming ];
+  load.
+```
+"
 Class {
 	#name : 'BaselineOfPAM',
 	#superclass : 'BaselineOf',
