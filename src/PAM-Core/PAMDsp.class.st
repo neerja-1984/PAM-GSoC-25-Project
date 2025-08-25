@@ -1,3 +1,31 @@
+"
+## Overview
+`PAMDsp` manages a DSP (Digital Signal Processor) instance used for text-to-speech and number playback.  
+It provides convenience methods to:
+- load intilized DSP (`numbers`, `phonemes`) from `PAMDspUtility`,
+- play digits or arbitrary text,
+- add prosody (stress, duration, amplitude) to speech,
+- ensure cleanup of the DSP instance after playback.
+
+Each call runs asynchronously (`fork`) so the Pharo remains responsive.
+
+---
+
+## Usage
+
+```language=Pharo&anchor=Example1
+| dsp |
+dsp := PAMDsp new.
+
+""use any 1 from below""
+
+dsp sayNumbers0to9.
+dsp sayNumbers: #(3 1 4 1 5 9).
+dsp sayText: 'dog'.
+dsp sayTextWithProsody: 'dog' asChild: false. ""false = adult preset. Toggle it to true to see the difference""
+
+
+"
 Class {
 	#name : 'PAMDsp',
 	#superclass : 'Object',

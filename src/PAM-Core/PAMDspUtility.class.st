@@ -1,3 +1,53 @@
+"
+## Overview
+`PAMDspUtility` is the backbone of the PAM system.  
+It sets up DSP instances, manages sample players, and provides helper methods for phoneme order, logging, and presets (child/adult voice).  
+
+Most `PAMDsp` methods delegate to here.  
+Use this class when you want to directly configure or inspect DSP resources.
+
+The chain of Usage : `PAMDspUtility → PAMDsp → PAMDspExamples`
+
+---
+
+## Usage
+
+### Presets
+```language=Pharo
+PAMDspUtility adultPreset.   ""275 Hz (adult voice)""
+PAMDspUtility childPreset.   ""500 Hz (child voice)""
+PAMDspUtility notePresetForChild: true.  ""Logs + returns 500""
+```
+
+### DSP lifecycle
+```language=Pharo
+PAMDspUtility dspInstance.            ""Current dsp, if any""
+PAMDspUtility dspInstance: nil.       ""Reset""
+```
+
+### Initialize with samples
+```language=Pharo
+""1. Looks for the folder in Documents/phoneme
+
+2. Creates TpSampler
+
+3. Starts the DSP""
+""make sure the respective folder ( value of argument foldername is present in the Documents path""
+PAMDspUtility initializeWithLabel: 'Phoneme' folderName: 'phoneme'. 
+```
+
+### DSP intilize
+```language=Pharo
+PAMDspUtility numbers.   ""DSP for numbers""
+PAMDspUtility phonemes.  ""DSP for phonemes""
+```
+
+### IPA ordering
+```language=Pharo
+PAMDspUtility ipaOrder first: 5.
+""defined dictionary that returns #('a_colon' 'aɪ' 'aʊ' 'b' 'd')""
+```
+"
 Class {
 	#name : 'PAMDspUtility',
 	#superclass : 'Object',
